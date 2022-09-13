@@ -4,9 +4,9 @@ export const style = StyleSheet.create({
   input: {
     flex: 1,
     flexDirection: "row",
-    backgroundColor: "#ffffff",
+    backgroundColor: "red",
     alignItems: "center",
-    maxHeight: 20,
+    height: 40,
     marginLeft: 8,
   },
 });
