@@ -6,7 +6,7 @@ export const loginApi = (data) => {
     .then((res) => {
       Toast.show({
         type: "success",
-        text1: "Cadastro realizado com sucesso!",
+        text1: "Login realizado com sucesso!",
       });
     })
     .catch((err) =>
