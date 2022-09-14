@@ -1,43 +1,68 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import { loginApi } from "../../../http/services/loginRequest";
+import { authLoginStore } from "../../../stores/AuthLogin";
+import { loginSchema } from "../../../validators/schema";
+
 import Button from "../../atoms/Button";
 import ControlledInput from "../../atoms/ControlledInput";
 import NoStyleButton from "../../atoms/NoStyleButton";
-import ContainerInput from "../../ContainerInput";
+import BottomContainer from "../../molecules/BottomContainer";
+import ContainerLogin from "../../molecules/ContainerLogin";
 import { style } from "./style";
 
-const LoginForm = () => {
-  const { control } = useForm({});
-  const navigation = useNavigation();
-  return (
-    <View style={style.container}>
-      <Text style={style.loginTitle}>Login</Text>
-      <ContainerInput>
-        <Icon name="ios-mail-outline" size={20} color="#FFC225" />
-        <ControlledInput
-          placeholder={"Emailzinho de merda"}
-          control={control}
-          name={"name1"}
-        />
-      </ContainerInput>
+interface LoginProps {
+  email: string;
+  password: string;
+}
 
-      <ContainerInput>
-        <Icon name="ios-lock-closed-outline" size={20} color="#FFC225" />
-        <ControlledInput
-          placeholder={"Senha, sugestão: 1234"}
-          control={control}
-          name={"name2"}
-        />
-      </ContainerInput>
-      <Button textValue={"Entrar"} />
-      <NoStyleButton
-        textValue={"Cadastre-se"}
-        onClick={() => navigation.navigate("Register")}
+const LoginForm = () => {
+  const { changeUserOn } = authLoginStore();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginProps>({ resolver: yupResolver(loginSchema) });
+
+  const navigation = useNavigation();
+
+  async function handlerUserLogin(data: LoginProps) {
+    await loginApi(data);
+
+    changeUserOn(true);
+  }
+  return (
+    <ContainerLogin>
+      <Text style={style.loginTitle}>Login</Text>
+      <ControlledInput
+        control={control}
+        name={"email"}
+        placeholder={"Emeiu"}
+        error={errors.email}
+        icon={<Icon name="ios-mail-outline" size={20} color="#FFC225" />}
       />
-    </View>
+
+      <ControlledInput
+        placeholder={"Senha, sugestão: 1234"}
+        secureTextEntry
+        control={control}
+        name={"password"}
+        error={errors.password}
+        icon={<Icon name="ios-lock-closed-outline" size={20} color="#FFC225" />}
+      />
+      <BottomContainer>
+        <Button textValue={"Entrar"} onClick={handleSubmit(handlerUserLogin)} />
+        <NoStyleButton
+          textValue={"Cadastre-se"}
+          onClick={() => navigation.navigate("Register")}
+        />
+      </BottomContainer>
+    </ContainerLogin>
   );
 };
 

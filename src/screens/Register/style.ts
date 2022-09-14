@@ -4,5 +4,7 @@ export const styleKeyboard = StyleSheet.create({
   keyboard: {
     flex: 1,
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

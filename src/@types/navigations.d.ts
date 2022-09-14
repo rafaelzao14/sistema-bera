@@ -3,6 +3,7 @@ export declare global {
     interface RootParamList extends RootStackParamList {
       Register: undefined;
       Login: undefined;
+      Debits: undefined;
     }
   }
 }

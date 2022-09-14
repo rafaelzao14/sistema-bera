@@ -1,19 +1,28 @@
 import React from "react";
 import { TextInput, TextInputProps } from "react-native";
+import ContainerInput from "../../molecules/ContainerInput";
+import ErrorMsg from "../ErrorAlert";
 
 import { style } from "./style";
 
-interface InputProps extends TextInputProps {
-  typePassword?: boolean;
+export interface InputProps extends TextInputProps {
+  errorMessage?: string;
+  icon?: React.ReactNode;
 }
-export const Input = ({ typePassword, ...rest }: InputProps) => {
+const Input = ({ errorMessage, icon, ...rest }: InputProps) => {
   return (
-    <TextInput
-      style={style.input}
-      placeholderTextColor="#AEA8A8"
-      secureTextEntry={typePassword}
-      autoCapitalize="none"
-      {...rest}
-    />
+    <>
+      <ContainerInput>
+        {icon && icon}
+        <TextInput
+          style={style.input}
+          placeholderTextColor="#AEA8A8"
+          autoCapitalize="none"
+          {...rest}
+        />
+      </ContainerInput>
+      {errorMessage && <ErrorMsg msgError={errorMessage} />}
+    </>
   );
 };
+export default Input;

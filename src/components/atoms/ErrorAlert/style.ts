@@ -1,12 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
-  input: {
-    flex: 1,
+  error: {
     flexDirection: "row",
-    backgroundColor: "none",
-    alignItems: "center",
-    height: 40,
+    color: "red",
+    padding: 8,
     marginLeft: 8,
   },
 });

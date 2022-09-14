@@ -14,7 +14,7 @@ const Register = () => {
       resizeMode="cover"
       style={style.backgroundImg}
     >
-      <SafeAreaView>
+      <SafeAreaView style={styleKeyboard.keyboard}>
         <LogoBeer />
         <KeyboardAwareScrollView contentContainerStyle={styleKeyboard.keyboard}>
           <RegisterForm />

@@ -4,6 +4,7 @@ export const styleKeyboard = StyleSheet.create({
   keyboard: {
     flex: 1,
     flexDirection: "column",
-    maxWidth: 337,
+    maxWidth: 400,
+    maxHeight: 450,
   },
 });

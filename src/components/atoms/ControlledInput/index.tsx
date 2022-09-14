@@ -1,34 +1,34 @@
 import React from "react";
-import { Controller } from "react-hook-form";
-import { Input } from "../Input";
+import { Controller, FieldError } from "react-hook-form";
+import Input, { InputProps } from "../Input";
 
-interface ControllerProps {
+interface ControllerProps extends InputProps {
   control: any;
   name?: string;
-  placeholder?: string;
-  typePassword?: boolean;
+  error?: FieldError;
 }
 
 const ControlledInput = ({
   name,
   control,
-  placeholder,
-  typePassword,
+  error,
+  ...rest
 }: ControllerProps) => {
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field: { onChange, value } }) => (
-        <Input
-          onChangeText={onChange}
-          value={value}
-          placeholder={placeholder}
-          placeholderTextColor="#AEA8A8"
-          secureTextEntry={typePassword}
-          autoCapitalize="none"
-        />
-      )}
+      render={({ field: { onChange, value } }) => {
+        return (
+          <Input
+            onChangeText={onChange}
+            value={value}
+            autoCapitalize="none"
+            errorMessage={error?.message}
+            {...rest}
+          />
+        );
+      }}
     />
   );
 };
