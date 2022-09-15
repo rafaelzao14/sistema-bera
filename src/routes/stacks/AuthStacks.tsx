@@ -2,20 +2,14 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import DebitsView from "../../components/organisms/DebitsView";
+import Login from "../../screens/Login";
+import Register from "../../screens/Register";
 import { authLoginStore } from "../../stores/AuthLogin";
-import NoAuth from "./NoAuth";
 
 const AuthStacks = () => {
   const Stack = createNativeStackNavigator();
   const { isLogged } = authLoginStore();
 
-  const authorizedRoutes = () => {
-    if (isLogged) {
-      return <Stack.Screen name="Debits" component={DebitsView} />;
-    } else {
-      return <NoAuth />;
-    }
-  };
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -23,7 +17,14 @@ const AuthStacks = () => {
           headerShown: false,
         }}
       >
-        {authorizedRoutes()}
+        {isLogged === true ? (
+          <Stack.Screen name="Debits" component={DebitsView} />
+        ) : (
+          <>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+          </>
+        )}
       </Stack.Navigator>
     </NavigationContainer>
   );
