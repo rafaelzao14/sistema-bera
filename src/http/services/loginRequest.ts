@@ -1,18 +1,12 @@
-import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { API } from "./mainRequest";
 
-export const loginApi = (data) => {
-  API.post("/login", data)
-    .then((res) => {
-      Toast.show({
-        type: "success",
-        text1: "Login realizado com sucesso!",
-      });
-    })
-    .catch((err) =>
-      Toast.show({
-        type: "error",
-        text1: "Login ou senha inválidos!",
-      })
-    );
+export const loginApi = async (data) => {
+  try {
+    const res = await API.post("/login", data);
+    return res.data;
+  } catch (error) {
+    console.error(error);
+
+    throw error;
+  }
 };

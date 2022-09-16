@@ -2,7 +2,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { loginApi } from "../../../http/services/loginRequest";
 import { authLoginStore } from "../../../stores/AuthLogin";
@@ -21,7 +21,7 @@ interface LoginProps {
 }
 
 const LoginForm = () => {
-  const { changeUserOn } = authLoginStore();
+  const { changeUserOn, setInfoUser } = authLoginStore();
 
   const {
     control,
@@ -32,9 +32,14 @@ const LoginForm = () => {
   const navigation = useNavigation();
 
   async function handlerUserLogin(data: LoginProps) {
-    await loginApi(data);
+    try {
+      const response = await loginApi(data);
 
-    changeUserOn(true);
+      changeUserOn(true);
+      setInfoUser(response.user.name);
+    } catch (error) {
+      Alert.alert("deu ruim");
+    }
   }
   return (
     <ContainerLogin>

@@ -4,7 +4,7 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "space-between",
-    backgroundColor: "#FFF",
+    backgroundColor: "#F8F8F8",
   },
   text: {
     color: "black",

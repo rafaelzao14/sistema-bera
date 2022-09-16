@@ -1,13 +1,15 @@
 import React from "react";
-import { Text, View } from "react-native";
-import TabMenu from "../../molecules/TabMenu";
+import { View } from "react-native";
+import HeaderMain from "../HeaderMain";
+import ModalHeader from "../ModalHeader";
+
 import { style } from "./style";
 
 const DebitsView = () => {
   return (
     <View style={style.container}>
-      <Text style={style.text}>DebitsView</Text>
-      <TabMenu />
+      <HeaderMain />
+      <ModalHeader />
     </View>
   );
 };
