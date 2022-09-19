@@ -3,7 +3,7 @@ import create from "zustand";
 type AuthLog = {
   isLogged: boolean;
   changeUserOn: (authState: boolean) => void;
-  infoUser: any;
+  infoUser: string;
   setInfoUser: (data: any) => void;
 };
 

@@ -1,4 +1,7 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+
+const height = Dimensions.get("window").height;
+const width = Dimensions.get("window").width;
 
 export const style = StyleSheet.create({
   container: {
@@ -35,5 +38,11 @@ export const style = StyleSheet.create({
     color: "#FFF",
     marginLeft: 207,
     marginTop: 8,
+  },
+  modal: {
+    flex: 1,
+    backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

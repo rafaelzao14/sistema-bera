@@ -34,7 +34,6 @@ const LoginForm = () => {
   async function handlerUserLogin(data: LoginProps) {
     try {
       const response = await loginApi(data);
-
       changeUserOn(true);
       setInfoUser(response.user.name);
     } catch (error) {
