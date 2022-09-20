@@ -35,7 +35,7 @@ const LoginForm = () => {
     try {
       const response = await loginApi(data);
       changeUserOn(true);
-      setInfoUser(response.user.name);
+      setInfoUser(response.user);
     } catch (error) {
       Alert.alert("deu ruim");
     }

@@ -2082,12 +2082,27 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.5.tgz"
   integrity sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==
 
+"@types/react-native-modal-dropdown@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-native-modal-dropdown/-/react-native-modal-dropdown-1.0.0.tgz#6e74d2b06d843a582390aa6b5d1d1d106abdc43f"
+  integrity sha512-Mua953wx0OKcfGDs/DkuxUicuqHGmDgy6qqADa5wcBgR5Q67CLBs2JefKpx9Tr43yHFNZ+af7+Owe5mDidVJpw==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-navigation@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@types/react-native-navigation/-/react-native-navigation-2.0.0.tgz#9a2353be6b31a864336e8fef4e3be305c3ee1422"
   integrity sha512-/TJjCHETkiJSNjsI4IZsL1SSl2CHVGSx0z1PcHVNqyBPa0CiMU8rQESOJeUQecUROAiJHef+naqKuBokuNONBA==
   dependencies:
     react-native-navigation "*"
+
+"@types/react-native@*":
+  version "0.70.2"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.2.tgz#ff4d19be4092154e5994edf3c3d5b14b24339fe3"
+  integrity sha512-WkeKpC+8FkQExsnUfdDzdArNaVWNIW+ncR3yqCb94WC/Xo7b5J+0rVUY7SoZfUXfPMvO/qoVGZvAyWbM0bU1Bw==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react-native@~0.69.1":
   version "0.69.9"
@@ -6057,6 +6072,11 @@ react-native-codegen@^0.69.2:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-dropdown-picker@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.2.tgz#3d17de3d8a84cb8e74a2ffda6be417d287245b81"
+  integrity sha512-cZBPyN+k52jA9XguFnKoF5tLf31z6gjZ8GijO/pfVNSSEtPwZ14UTUrr87JiiOnMh5K/O2kRzZ/jZN8D0MmUMA==
 
 react-native-gradle-plugin@^0.0.7:
   version "0.0.7"

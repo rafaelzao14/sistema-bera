@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import { FlatList, View } from "react-native";
+import MugBerr from "../../../assets/pendents.svg";
 import { getAllUser } from "../../../http/services/getAllUsers";
 import CardDebt from "../../atoms/CardDebts";
+import SubHeader from "../../molecules/SubHeader";
 import { style } from "./style";
 
 type reasonProp = {
@@ -31,7 +33,7 @@ const ListDebts = () => {
   async function getUsers() {
     const response = await getAllUser();
     const users: User[] = response.data;
-    console.log("usuario:", users[0].debt[0]);
+
     setUsers(users);
   }
 
@@ -40,14 +42,19 @@ const ListDebts = () => {
   }, []);
 
   return (
-    <FlatList
-      contentContainerStyle={style.container}
-      data={users}
-      renderItem={({ item, index }) => (
-        <CardDebt userDetails={item} indexItem={index} />
-      )}
-      keyExtractor={({ id }) => String(id)}
-    />
+    <View style={style.container}>
+      <SubHeader>
+        <MugBerr height={124} width={84} />
+      </SubHeader>
+      <FlatList
+        contentContainerStyle={style.containerList}
+        data={users}
+        renderItem={({ item, index }) => (
+          <CardDebt userDetails={item} indexItem={index} />
+        )}
+        keyExtractor={({ id }) => String(id)}
+      />
+    </View>
   );
 };
 

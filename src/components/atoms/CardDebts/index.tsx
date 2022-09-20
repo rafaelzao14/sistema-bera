@@ -1,7 +1,7 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
+import GlassBeer from "../../../assets/glassBeer.svg";
 import { User } from "../../organisms/ListDebts";
-
 import { style } from "./style";
 
 type CardProps = {
@@ -10,14 +10,15 @@ type CardProps = {
 };
 
 const CardDebt = ({ userDetails, indexItem }: CardProps) => {
-  console.log(userDetails?.debt[indexItem]?.reason[indexItem].quantity);
+  console.log(userDetails?.debt[indexItem]?.reason[indexItem]?.quantity);
   return (
-    <View style={style.card}>
+    <TouchableOpacity style={style.card}>
       <Text>{userDetails.name}</Text>
-      <Text>{userDetails.email}</Text>
-      <Text>{userDetails.id}</Text>
-      <Text>{userDetails?.debt[indexItem]?.description}</Text>
-    </View>
+      <View style={style.containerText}>
+        <GlassBeer />
+        <Text style={style.textInfo}>Beras: 00</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
