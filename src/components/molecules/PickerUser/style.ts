@@ -8,8 +8,8 @@ export const style = StyleSheet.create({
     height: 46,
 
     borderBottomWidth: 1,
+    borderWidth: 0,
     borderColor: "#FFF",
-    borderRadius: 12,
 
     alignSelf: "center",
     marginBottom: 16,
@@ -28,5 +28,6 @@ export const style = StyleSheet.create({
     backgroundColor: "#FFCA43",
     borderWidth: 1,
     borderColor: "#FFF",
+    position: "absolute",
   },
 });

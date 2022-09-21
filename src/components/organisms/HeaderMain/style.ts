@@ -3,10 +3,12 @@ import { Dimensions, StyleSheet } from "react-native";
 const height = Dimensions.get("window").height;
 const width = Dimensions.get("window").width;
 
-export const style = StyleSheet.create({
+export const styleHeader = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
     maxHeight: 150,
     backgroundColor: "#FFCA43",
     shadowColor: "#000",
@@ -22,7 +24,7 @@ export const style = StyleSheet.create({
   containerInfoUser: {
     flexDirection: "column",
     paddingTop: 58,
-    paddingLeft: 16,
+    paddingLeft: 32,
     maxHeight: 150,
   },
   titleWelcome: {
@@ -36,13 +38,8 @@ export const style = StyleSheet.create({
   },
   downIcon: {
     color: "#FFF",
-    marginLeft: 207,
-    marginTop: 8,
-  },
-  modal: {
-    flex: 1,
-    backgroundColor: "red",
-    justifyContent: "center",
-    alignItems: "center",
+    marginLeft: 58,
+    marginRight: 32,
+    marginTop: 82,
   },
 });

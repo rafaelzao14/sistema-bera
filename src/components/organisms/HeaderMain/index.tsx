@@ -2,20 +2,23 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { authLoginStore } from "../../../stores/AuthLogin";
-import { style } from "./style";
+import AvatarFake from "../../atoms/AvatarFake";
+import { styleHeader } from "./style";
 
 const HeaderMain = () => {
   const { infoUser } = authLoginStore();
 
   return (
-    <View style={style.container}>
-      <View style={style.containerInfoUser}>
-        <Text style={style.titleWelcome}>Bem vindo,</Text>
-        <Text style={style.nameUser}>{infoUser?.name}</Text>
+    <View style={styleHeader.container}>
+      <View style={styleHeader.containerInfoUser}>
+        <Text style={styleHeader.titleWelcome}>Bem vindo,</Text>
+        <Text style={styleHeader.nameUser}>{infoUser?.name}</Text>
       </View>
       <TouchableOpacity>
-        <Icon name="chevron-down" size={20} style={style.downIcon} />
+        <Icon name="chevron-down" size={20} style={styleHeader.downIcon} />
       </TouchableOpacity>
+
+      <AvatarFake />
     </View>
   );
 };

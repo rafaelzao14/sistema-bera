@@ -4,7 +4,7 @@ export const style = StyleSheet.create({
   button: {
     backgroundColor: "#DD9C03",
     height: 40,
-    width: 270,
+    width: 320,
     borderRadius: 16,
     alignItems: "center",
     justifyContent: "center",

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
-import MugBerr from "../../../assets/pendents.svg";
 import { getAllUser } from "../../../http/services/getAllUsers";
 import CardDebt from "../../atoms/CardDebts";
 import SubHeader from "../../molecules/SubHeader";
@@ -43,9 +42,7 @@ const ListDebts = () => {
 
   return (
     <View style={style.container}>
-      <SubHeader>
-        <MugBerr height={124} width={84} />
-      </SubHeader>
+      <SubHeader />
       <FlatList
         contentContainerStyle={style.containerList}
         data={users}

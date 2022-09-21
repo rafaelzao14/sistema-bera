@@ -4,7 +4,7 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
 
-    backgroundColor: "#B1b2b3",
+    backgroundColor: "#F4F4F4",
   },
   containerSelect: {
     width: "100%",
@@ -12,7 +12,7 @@ export const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFCA43",
-    marginTop: 86,
+    marginTop: 46,
   },
   text: {
     color: "black",

@@ -9,6 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@dicebear/adventurer-neutral": "^4.10.5",
+    "@dicebear/avatars": "^4.10.5",
+    "@dicebear/avatars-bottts-sprites": "^4.10.5",
     "@hookform/resolvers": "^2.9.8",
     "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/native": "^6.0.12",

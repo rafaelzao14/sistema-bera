@@ -26,8 +26,11 @@ const LoginForm = () => {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<LoginProps>({ resolver: yupResolver(loginSchema) });
+  } = useForm<LoginProps>({
+    resolver: yupResolver(loginSchema),
+  });
 
   const navigation = useNavigation();
 
