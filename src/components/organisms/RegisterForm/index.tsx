@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Text } from "react-native";
+import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/Ionicons";
 import { registerApi } from "../../../http/services/registerRequest";
 import { registerSchema } from "../../../validators/schema";
@@ -15,7 +16,7 @@ import ContainerReg from "../../molecules/ContainerRegister";
 import { style } from "./style";
 
 interface DataFormProp {
-  name: string;
+  username: string;
   email: string;
   password: string;
   confirm_password: string;
@@ -32,8 +33,22 @@ const RegisterForm = () => {
   });
   const navigation = useNavigation();
 
-  function handleUserRegister(data: DataFormProp) {
-    registerApi(data);
+  async function handleUserRegister(data: DataFormProp) {
+    const { username, email, password } = data;
+
+    const register = { username: username, email: email, password: password };
+    try {
+      await registerApi(register);
+      Toast.show({
+        type: "success",
+        text2: "Mais um cadastro inútil no banco de dados",
+      });
+    } catch (error) {
+      Toast.show({
+        type: "error",
+        text2: "Ou o adm fez cagada ou você tá cagando!",
+      });
+    }
   }
   return (
     <ContainerReg>
@@ -41,10 +56,10 @@ const RegisterForm = () => {
 
       <ControlledInput
         control={control}
-        name={"name"}
+        name={"username"}
         placeholder={"Qualquer bosta que diga que é você"}
         icon={<Icon name="person-circle-outline" size={20} color="#FFC225" />}
-        error={errors.name}
+        error={errors.username}
       />
 
       <ControlledInput

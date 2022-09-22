@@ -1,13 +1,15 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
+import jwt_decode from "jwt-decode";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Alert, Text } from "react-native";
+import { Text } from "react-native";
+import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/Ionicons";
+import { setTokenStorage } from "../../../helpers/localStorage";
 import { loginApi } from "../../../http/services/loginRequest";
 import { authLoginStore } from "../../../stores/AuthLogin";
 import { loginSchema } from "../../../validators/schema";
-
 import Button from "../../atoms/Button";
 import ControlledInput from "../../atoms/ControlledInput";
 import NoStyleButton from "../../atoms/NoStyleButton";
@@ -38,9 +40,21 @@ const LoginForm = () => {
     try {
       const response = await loginApi(data);
       changeUserOn(true);
-      setInfoUser(response.user);
+
+      setTokenStorage(response.access_token);
+
+      const decoded = jwt_decode(response.access_token);
+
+      const { username }: string = decoded;
+
+      setInfoUser(username);
     } catch (error) {
-      Alert.alert("deu ruim");
+      Toast.show({
+        type: "error",
+        text1: "Algum erro fdp aconteceu",
+        text2:
+          "Pode ser do servidor um sua imcopetência de digitar as coisas certa",
+      });
     }
   }
   return (

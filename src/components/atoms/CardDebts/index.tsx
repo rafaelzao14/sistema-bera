@@ -10,13 +10,13 @@ type CardProps = {
 };
 
 const CardDebt = ({ userDetails, indexItem }: CardProps) => {
-  console.log(userDetails?.debt[indexItem]?.reason[indexItem]?.quantity);
+  console.log(userDetails);
   return (
     <TouchableOpacity style={style.card}>
-      <Text>{userDetails.name}</Text>
+      <Text>{userDetails.username}</Text>
       <View style={style.containerText}>
         <GlassBeer />
-        <Text style={style.textInfo}>Beras: 00</Text>
+        <Text style={style.textInfo}>Beras: {userDetails.debtQuantity}</Text>
       </View>
     </TouchableOpacity>
   );

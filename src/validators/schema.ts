@@ -12,7 +12,7 @@ export const loginSchema = yup.object({
 });
 
 export const registerSchema = yup.object({
-  name: yup.string().required("Informe o nominho mongolão"),
+  username: yup.string().required("Informe o nominho mongolão"),
   email: yup
     .string()
     .email("Quer tutorial de como escrever email?")

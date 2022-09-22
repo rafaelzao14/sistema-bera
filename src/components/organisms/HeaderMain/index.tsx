@@ -12,7 +12,7 @@ const HeaderMain = () => {
     <View style={styleHeader.container}>
       <View style={styleHeader.containerInfoUser}>
         <Text style={styleHeader.titleWelcome}>Bem vindo,</Text>
-        <Text style={styleHeader.nameUser}>{infoUser?.name}</Text>
+        <Text style={styleHeader.nameUser}>{infoUser}</Text>
       </View>
       <TouchableOpacity>
         <Icon name="chevron-down" size={20} style={styleHeader.downIcon} />
