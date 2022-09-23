@@ -1,15 +1,31 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwt_decode, { JwtPayload } from "jwt-decode";
 import create from "zustand";
+import { persist } from "zustand/middleware";
 
-type AuthLog = {
+type AuthState = {
   isLogged: boolean;
-  changeUserOn: (authState: boolean) => void;
-  infoUser: string;
-  setInfoUser: (data: string) => void;
+  token: string;
+  userInfo: { email: string; username: string };
+  login: (token: string) => void;
 };
 
-export const authLoginStore = create<AuthLog>((set) => ({
+export const store: (set, get) => AuthState = (set) => ({
   isLogged: false,
-  infoUser: "",
-  changeUserOn: (authState) => set({ isLogged: authState }),
-  setInfoUser: (data) => set({ infoUser: data }),
-}));
+  token: "",
+  userInfo: { email: "", username: "" },
+  login: (token) => {
+    set(() => ({
+      token: token,
+      isLogged: true,
+      userInfo: jwt_decode<JwtPayload>(token),
+    }));
+  },
+});
+
+export const useAuthStore = create(
+  persist(store, {
+    getStorage: () => AsyncStorage,
+    name: "auth",
+  })
+);

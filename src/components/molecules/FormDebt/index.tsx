@@ -2,14 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { ActivityIndicator, View } from "react-native";
 import Toast from "react-native-toast-message";
+import { registerDebt } from "../../../http/services/registerDebt";
 import { fakeDebits, fakeListUser } from "../../../mocks/listUsers";
-import { sleep } from "../../../utils/sleep";
 import Button from "../../atoms/Button";
 import ControlledComment from "../../atoms/ControlledInputComment";
 import PickerDebit from "../PickDebit";
 import PickerUser from "../PickerUser";
 import { style } from "./style";
 
+type formProp = {
+  comment?: string;
+  debtId?: number;
+  userId?: number;
+};
+type dataProp = {
+  reasonId?: number;
+  description?: string;
+};
 const FormDebt = () => {
   const {
     control,
@@ -18,15 +27,19 @@ const FormDebt = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  async function handleNewDebit(data: any) {
-    console.log(data);
+  async function handleNewDebit(data: formProp) {
+    const { comment, debtId, userId } = data;
 
-    await sleep(2000);
-    Toast.show({
-      type: "success",
-      text1: "Vacilo Registrado!",
-    });
-    reset();
+    const dataApi: any = { reasonId: debtId, description: comment };
+    try {
+      await registerDebt(userId, dataApi);
+
+      Toast.show({
+        type: "success",
+        text1: "Vacilo Registrado!",
+      });
+      reset();
+    } catch (error) {}
   }
   return (
     <View style={style.containerSelect}>
@@ -43,3 +56,6 @@ const FormDebt = () => {
   );
 };
 export default FormDebt;
+function registerDebts(id: any, data: string) {
+  throw new Error("Function not implemented.");
+}

@@ -1,14 +1,12 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigation } from "@react-navigation/native";
-import jwt_decode from "jwt-decode";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Text } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/Ionicons";
-import { setTokenStorage } from "../../../helpers/localStorage";
 import { loginApi } from "../../../http/services/loginRequest";
-import { authLoginStore } from "../../../stores/AuthLogin";
+import { useAuthStore } from "../../../stores/AuthLogin";
 import { loginSchema } from "../../../validators/schema";
 import Button from "../../atoms/Button";
 import ControlledInput from "../../atoms/ControlledInput";
@@ -23,7 +21,7 @@ interface LoginProps {
 }
 
 const LoginForm = () => {
-  const { changeUserOn, setInfoUser } = authLoginStore();
+  const { login } = useAuthStore();
 
   const {
     control,
@@ -39,15 +37,7 @@ const LoginForm = () => {
   async function handlerUserLogin(data: LoginProps) {
     try {
       const response = await loginApi(data);
-      changeUserOn(true);
-
-      setTokenStorage(response.access_token);
-
-      const decoded = jwt_decode(response.access_token);
-
-      const { username }: string = decoded;
-
-      setInfoUser(username);
+      login(response.access_token);
     } catch (error) {
       Toast.show({
         type: "error",

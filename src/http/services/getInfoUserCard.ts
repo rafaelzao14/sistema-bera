@@ -1,12 +1,11 @@
 import { API } from "../api";
 
-export const getAllUser = async () => {
+export const getInfoUserCard = async (id) => {
   try {
-    const res = await API.get("/users");
+    const res = await API.get(`/users/${id}/debts`);
+
     return res;
   } catch (error) {
     console.log(error);
-
-    throw error;
   }
 };

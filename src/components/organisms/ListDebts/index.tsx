@@ -2,7 +2,7 @@ import { MotiView } from "moti";
 import React, { ReactNode, useEffect, useState } from "react";
 import { FlatList, View } from "react-native";
 import { getAllUser } from "../../../http/services/getAllUsers";
-import CardDebt from "../../atoms/CardDebts";
+import CardDebt from "../../molecules/CardDebts";
 import SubHeader from "../../molecules/SubHeader";
 import { style } from "./style";
 

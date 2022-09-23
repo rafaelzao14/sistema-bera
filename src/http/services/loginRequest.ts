@@ -1,4 +1,4 @@
-import { API } from "./mainRequest";
+import { API } from "../api";
 
 export const loginApi = async (data) => {
   try {

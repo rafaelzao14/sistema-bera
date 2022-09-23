@@ -10,11 +10,13 @@ export const style = StyleSheet.create({
     borderColor: "#CFCFCF",
 
     height: 96,
-    width: 350,
+    width: 360,
 
     margin: 6,
+    paddingLeft: 16,
+    paddingRight: 20,
 
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignItems: "center",
 
     shadowColor: "#000000",
@@ -25,6 +27,13 @@ export const style = StyleSheet.create({
     shadowOpacity: 0.17,
     shadowRadius: 2.54,
     elevation: 3,
+  },
+  containerName: {
+    maxWidth: 72,
+    fontWeight: "bold",
+  },
+  userName: {
+    fontSize: 16,
   },
   containerText: {
     justifyContent: "center",

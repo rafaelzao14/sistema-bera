@@ -4,6 +4,7 @@ export declare global {
       Register: undefined;
       Login: undefined;
       Debits: undefined;
+      DebitsUser: undefined;
     }
   }
 }
