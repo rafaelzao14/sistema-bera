@@ -1,16 +1,16 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import Login from "../../screens/Login";
-import Register from "../../screens/Register";
+import Login from "../../../screens/Login";
+import Register from "../../../screens/Register";
 
-const Stacks = () => {
+const AuthStack = () => {
   const Stack = createNativeStackNavigator();
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
         animation: "fade_from_bottom",
-        animationDuration: 1000,
+        animationDuration: 500,
       }}
     >
       <Stack.Screen name="Login" component={Login} />
@@ -19,4 +19,4 @@ const Stacks = () => {
   );
 };
 
-export default Stacks;
+export default AuthStack;

@@ -2,7 +2,8 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import GlassBeer from "../../../assets/glassBeer.svg";
-import { getInfoUserCard } from "../../../http/services/getInfoUserCard";
+import { getInfoUserCard } from "../../../http/services/userService";
+
 import { userCardStore } from "../../../stores/useCardStore";
 import { style } from "./style";
 
@@ -20,13 +21,11 @@ const CardDebt = ({ userDetails, indexItem }: CardProps) => {
   async function handleRenderCard(id) {
     try {
       const res = await getInfoUserCard(id);
-      console.log(res.data);
+
       setInfoUserDebts(res.data);
 
       navigation.navigate("DebitsUser");
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   return (

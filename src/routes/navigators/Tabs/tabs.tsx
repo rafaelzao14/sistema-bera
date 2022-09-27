@@ -1,15 +1,15 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
-import NewDebitIcon from "../../assets/newDebit.svg";
-import BeerIcon from "../../assets/paids.svg";
-import PendentsIcon from "../../assets/pendents.svg";
-import DebitsView from "../../components/organisms/DebitsView";
-import NewDebit from "../../components/organisms/NewDebit";
-import PaidDebits from "../../components/organisms/PaidDebits";
-import Roots from "./roots";
-import { style } from "./style";
+import NewDebitIcon from "../../../assets/newDebit.svg";
+import BeerIcon from "../../../assets/paids.svg";
+import PendentsIcon from "../../../assets/pendents.svg";
+import DebitsView from "../../../screens/DebitsView";
+import HistoricDebts from "../../../screens/HistoricDebts";
+import NewDebit from "../../../screens/NewDebit";
+import PaidDebits from "../../../screens/PaidDebits";
+import { style } from "../style";
 
-const Tabs = () => {
+const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
@@ -53,7 +53,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="DebitsUser"
-        component={Roots}
+        component={HistoricDebts}
         options={{
           tabBarButton: () => null,
           // tabBarVisible: false,
@@ -63,4 +63,4 @@ const Tabs = () => {
   );
 };
 
-export default Tabs;
+export default TabNavigator;

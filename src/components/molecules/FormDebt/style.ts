@@ -2,12 +2,14 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
   containerSelect: {
-    width: "100%",
-    height: 420,
+    width: "90%",
+    height: 400,
     alignItems: "center",
+    alignSelf: "center",
     justifyContent: "center",
     backgroundColor: "#FFCA43",
     marginTop: 46,
+    borderRadius: 12,
   },
   text: {
     color: "black",

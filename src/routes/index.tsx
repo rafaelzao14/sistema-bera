@@ -3,23 +3,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 
 import { useAuthStore } from "../stores/AuthLogin";
-import Stacks from "./navigators/stacks";
-import Tabs from "./navigators/tabs";
+import AuthStack from "./navigators/Stacks/stacks";
+import TabNavigator from "./navigators/Tabs/tabs";
 
-const AuthStacks = () => {
+const Index = () => {
   const { isLogged } = useAuthStore();
 
   return (
     <NavigationContainer>
-      {isLogged ? (
-        <>
-          <Tabs />
-        </>
-      ) : (
-        <Stacks />
-      )}
+      {isLogged ? <TabNavigator /> : <AuthStack />}
     </NavigationContainer>
   );
 };
 
-export default AuthStacks;
+export default Index;

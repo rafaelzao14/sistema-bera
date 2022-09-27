@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 import { Text } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/Ionicons";
-import { registerApi } from "../../../http/services/registerRequest";
+import { registerApi } from "../../../http/services/userService";
+
 import { registerSchema } from "../../../validators/schema";
 
+import BottomContainer from "../../atoms/BottomContainer";
 import Button from "../../atoms/Button";
 import ControlledInput from "../../atoms/ControlledInput";
 import NoStyleButton from "../../atoms/NoStyleButton";
-import BottomContainer from "../../molecules/BottomContainer";
 import ContainerReg from "../../molecules/ContainerRegister";
 import { style } from "./style";
 

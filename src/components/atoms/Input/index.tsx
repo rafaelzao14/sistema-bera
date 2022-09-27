@@ -1,7 +1,7 @@
 import React from "react";
 import { TextInput, TextInputProps } from "react-native";
 import ContainerInput from "../../molecules/ContainerInput";
-import ErrorMsg from "../ErrorAlert";
+import ErrorMsg from "../ErrorMsg";
 
 import { style } from "./style";
 

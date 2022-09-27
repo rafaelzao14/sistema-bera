@@ -1,11 +1,12 @@
 import { useFocusEffect } from "@react-navigation/native";
-import { MotiView, useAnimationState } from "moti";
+import { useAnimationState } from "moti";
 import React from "react";
 import { View } from "react-native";
-import FormDebt from "../../molecules/FormDebt";
-import SubHeader from "../../molecules/SubHeader";
+import ViewAnimated from "../../components/atoms/ViewAnimated";
+import FormDebt from "../../components/molecules/FormDebt";
+import SubHeader from "../../components/molecules/SubHeader";
+import HeaderMain from "../../components/organisms/HeaderMain";
 
-import HeaderMain from "../HeaderMain";
 import { style } from "./style";
 
 const NewDebit = () => {
@@ -34,11 +35,11 @@ const NewDebit = () => {
     <View style={style.container}>
       <HeaderMain />
 
-      <SubHeader />
+      <SubHeader tittle={"Novo Vacilo"} />
 
-      <MotiView state={animationState}>
+      <ViewAnimated>
         <FormDebt />
-      </MotiView>
+      </ViewAnimated>
     </View>
   );
 };

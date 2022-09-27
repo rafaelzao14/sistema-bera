@@ -5,13 +5,13 @@ import { useForm } from "react-hook-form";
 import { Text } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/Ionicons";
-import { loginApi } from "../../../http/services/loginRequest";
+import { loginApi } from "../../../http/services/authServices";
 import { useAuthStore } from "../../../stores/AuthLogin";
 import { loginSchema } from "../../../validators/schema";
+import BottomContainer from "../../atoms/BottomContainer";
 import Button from "../../atoms/Button";
 import ControlledInput from "../../atoms/ControlledInput";
 import NoStyleButton from "../../atoms/NoStyleButton";
-import BottomContainer from "../../molecules/BottomContainer";
 import ContainerLogin from "../../molecules/ContainerLogin";
 import { style } from "./style";
 
@@ -26,7 +26,6 @@ const LoginForm = () => {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<LoginProps>({
     resolver: yupResolver(loginSchema),

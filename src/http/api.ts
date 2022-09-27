@@ -1,5 +1,5 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
+import { useAuthStore } from "../stores/AuthLogin";
 
 export const API = axios.create({
   baseURL: "http://172.25.0.108:3000/api/v1",
@@ -8,7 +8,7 @@ export const API = axios.create({
 
 API.interceptors.request.use(
   async (conf) => {
-    const token = await AsyncStorage.getItem("@token");
+    const token = useAuthStore.getState().token;
     conf.headers.Authorization = `Bearer ${token}`;
     return conf;
   },

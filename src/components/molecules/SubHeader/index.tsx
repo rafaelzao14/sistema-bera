@@ -5,11 +5,12 @@ import { style } from "./style";
 
 type SubHeaderProps = {
   children?: React.ReactNode;
+  tittle?: string;
 };
-const SubHeader = ({ children }: SubHeaderProps) => {
+const SubHeader = ({ children, tittle }: SubHeaderProps) => {
   return (
     <View style={style.containerTitle}>
-      <Text style={style.textTittle}> Lista dos Vacilões</Text>
+      <Text style={style.textTittle}> {tittle}</Text>
       {children}
     </View>
   );

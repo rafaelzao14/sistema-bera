@@ -1,15 +1,18 @@
 import React from "react";
 import { View } from "react-native";
-import SubHeader from "../../molecules/SubHeader";
-import HeaderMain from "../HeaderMain";
+import HeaderMain from "../../components/organisms/HeaderMain";
+import ListDebts from "../ListDebts";
+
 import { style } from "./style";
 
-const PaidDebits = () => {
+const DebitsView = () => {
   return (
     <View style={style.container}>
       <HeaderMain />
-      <SubHeader />
+
+      <ListDebts />
     </View>
   );
 };
-export default PaidDebits;
+
+export default DebitsView;

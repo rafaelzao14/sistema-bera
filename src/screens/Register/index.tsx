@@ -3,7 +3,7 @@ import { ImageBackground } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import LogoBeer from "../../components/atoms/LogoBeer";
-import { style } from "../../components/organisms/ContainerMain/MainContainer";
+import { style } from "../../components/molecules/ContainerMain/MainContainer";
 import RegisterForm from "../../components/organisms/RegisterForm";
 import { styleKeyboard } from "./style";
 

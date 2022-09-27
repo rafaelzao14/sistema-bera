@@ -2,9 +2,16 @@
   "expo": {
     "name": "sistema-beras",
     "slug": "sistema-beras",
+    "assetBundlePatterns": ["**/*"],
+    "icon": "",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "ios": {
+      "bundleIdentifier": "sistema.beras",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "sistema.beras",
+      "versionCode": 1
+    }
   }
 }
