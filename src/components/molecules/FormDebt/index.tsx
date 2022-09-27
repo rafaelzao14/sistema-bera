@@ -37,8 +37,6 @@ const FormDebt = () => {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(debtSchema) });
 
-  console.log(errors);
-
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     init();
