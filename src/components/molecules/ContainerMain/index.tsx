@@ -1,12 +1,12 @@
 import React from "react";
-import { View } from "react-native";
+import { SafeAreaView } from "react-native";
 import { style } from "./MainContainer";
 
 export interface MainContainerProps {
   children: React.ReactNode;
 }
 const MainContainer = ({ children }: MainContainerProps) => {
-  return <View style={style.containerMain}>{children}</View>;
+  return <SafeAreaView style={style.containerMain}>{children}</SafeAreaView>;
 };
 
 export default MainContainer;

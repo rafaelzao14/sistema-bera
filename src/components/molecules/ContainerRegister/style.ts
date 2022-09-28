@@ -7,6 +7,6 @@ export const style = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     minWidth: 350,
-    minHeight: 510,
+    minHeight: 414,
   },
 });

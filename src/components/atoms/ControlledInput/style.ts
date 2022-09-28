@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#ffffff",
     alignItems: "center",
-    maxHeight: 30,
+    maxHeight: 32,
     marginLeft: 8,
   },
 });

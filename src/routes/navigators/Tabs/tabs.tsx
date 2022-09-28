@@ -49,6 +49,7 @@ const TabNavigator = () => {
           tabBarActiveTintColor: "#FFF",
           tabBarInactiveTintColor: "#BC6600",
           tabBarLabelStyle: style.label,
+          unmountOnBlur: true,
         }}
       />
       <Tab.Screen

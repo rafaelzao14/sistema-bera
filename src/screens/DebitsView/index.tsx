@@ -9,7 +9,6 @@ const DebitsView = () => {
   return (
     <View style={style.container}>
       <HeaderMain />
-
       <ListDebts />
     </View>
   );

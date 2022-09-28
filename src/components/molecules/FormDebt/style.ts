@@ -2,8 +2,9 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
   containerSelect: {
+    flex: 1,
     width: "90%",
-    height: 400,
+    minHeight: 400,
     alignItems: "center",
     alignSelf: "center",
     justifyContent: "center",

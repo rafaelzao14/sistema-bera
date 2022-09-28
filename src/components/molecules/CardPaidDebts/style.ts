@@ -8,25 +8,37 @@ export const style = StyleSheet.create({
     justifyContent: "space-around",
 
     backgroundColor: "#CFCFCF",
-    width: 380,
-    maxHeight: 100,
+    maxHeight: 264,
+    maxWidth: "80%",
+    // maxWidth: 380,
+    minHeight: 100,
+    minWidth: 340,
 
-    marginBottom: 16,
+    marginTop: 16,
 
     borderRadius: 12,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
   containerElements: {
-    maxWidth: "100%",
+    alignItems: "flex-start",
+    width: "80%",
+    paddingLeft: 8,
   },
   containerInfo: {
-    alignItems: "center",
+    paddingRight: 16,
   },
-  textReason: {
+  textName: {
     fontWeight: "bold",
   },
   textDescription: {
-    fontStyle: "italic",
-    fontSize: 10,
-    width: "100%",
+    fontSize: 11,
   },
 });

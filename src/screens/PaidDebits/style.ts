@@ -2,18 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "#F4F4F4",
-    paddingTop: 32,
-  },
-  text: {
-    color: "black",
-    textAlign: "center",
-    marginTop: 100,
+    height: "100%",
+    // backgroundColor: "red",
   },
   containerList: {
     alignItems: "center",
-    justifyContent: "center",
-    marginTop: 116,
+    backgroundColor: "#b2b2",
+    maxHeight: "100%",
   },
 });

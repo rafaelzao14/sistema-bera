@@ -8,7 +8,7 @@ export const loginSchema = yup.object({
   password: yup
     .string()
     .min(6, "Pelo menos 6 dígitos caraio")
-    .required("informe a droga da senha!"),
+    .required("Informe a droga da senha!"),
 });
 
 export const registerSchema = yup.object({
@@ -19,8 +19,7 @@ export const registerSchema = yup.object({
     .required("Informe a porra do email também!"),
   password: yup
     .string()
-    .min(6, "pelo menos 6 dígito caraio")
-    .max(12, "só 12 F** digito!")
+    .min(6, "Pelo menos 6 dígito caraio")
     .required("Não sabe uma senha, põe 123456"),
   confirm_password: yup
     .string()
@@ -30,11 +29,7 @@ export const registerSchema = yup.object({
 
 export const debtSchema = yup.object({
   userId: yup.number().positive().integer().required("Selecione um mongolão"),
-  debtId: yup
-    .number()
-    .positive()
-    .integer()
-    .required("tem que selecionar algo caraio"),
+  debtId: yup.number().positive().integer().required("Selecione algo, caraio!"),
   comment: yup
     .string()
     .required("Descreva melhor para que seja julgado melhor"),

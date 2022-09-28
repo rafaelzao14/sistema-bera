@@ -24,8 +24,13 @@ const CardDebt = ({ userDetails, indexItem }: CardProps) => {
 
       setInfoUserDebts(res.data);
 
-      navigation.navigate("DebitsUser");
-    } catch (error) {}
+      navigation.navigate("DebitsUser", {
+        id: userDetails.id,
+        name: userDetails.username,
+      });
+    } catch (error) {
+      throw error;
+    }
   }
 
   return (

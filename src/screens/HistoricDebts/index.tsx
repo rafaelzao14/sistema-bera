@@ -6,18 +6,21 @@ import SubHeader from "../../components/molecules/SubHeader";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import HeaderMain from "../../components/organisms/HeaderMain";
 
+import { useRoute } from "@react-navigation/native";
 import { userCardStore } from "../../stores/useCardStore";
 import { style } from "./style";
 
 const HistoricDebts = () => {
   const { infoUserDebts } = userCardStore();
+  const route = useRoute();
 
+  const { name } = route.params;
   return (
     <>
       <HeaderMain />
 
       <View style={style.container}>
-        <SubHeader tittle={"Meus Vacilos"} />
+        <SubHeader tittle={`Vacilos do ${name} `} />
         <ViewAnimated>
           <FlatList
             contentContainerStyle={style.containerList}

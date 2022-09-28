@@ -8,7 +8,7 @@ export const style = StyleSheet.create({
     borderColor: "#FFC225",
     maxHeight: 40,
     maxWidth: 266,
-    marginTop: 16,
+    marginTop: 8,
     alignItems: "center",
     justifyContent: "center",
   },

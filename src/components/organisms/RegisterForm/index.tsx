@@ -58,38 +58,38 @@ const RegisterForm = () => {
       <ControlledInput
         control={control}
         name={"username"}
-        placeholder={"Qualquer bosta que diga que é você"}
-        icon={<Icon name="person-circle-outline" size={20} color="#FFC225" />}
+        placeholder={"Qualquer nome merda"}
+        icon={<Icon name="person-circle-outline" size={18} color="#FFC225" />}
         error={errors.username}
       />
 
       <ControlledInput
         control={control}
         name={"email"}
-        placeholder={"emeiu"}
-        icon={<Icon name="ios-mail-outline" size={20} color="#FFC225" />}
+        placeholder={"Emeiu"}
+        icon={<Icon name="ios-mail-outline" size={18} color="#FFC225" />}
         error={errors.email}
       />
 
       <ControlledInput
         control={control}
         name={"password"}
-        placeholder={"senha"}
+        placeholder={"Senha"}
         secureTextEntry
-        icon={<Icon name="ios-lock-closed-outline" size={20} color="#FFC225" />}
+        icon={<Icon name="ios-lock-closed-outline" size={18} color="#FFC225" />}
         error={errors.password}
       />
 
-      {/* <Icon name="ios-lock-closed-outline" size={20} color="#EA8B8B" /> */}
+      {/* <Icon name="ios-lock-closed-outline" size={18} color="#EA8B8B" /> */}
       <ControlledInput
         control={control}
         name={"confirm_password"}
-        placeholder={"confirme a bosta da senha"}
+        placeholder={"Confirme a bosta da senha"}
         secureTextEntry
-        icon={<Icon name="ios-lock-closed-outline" size={20} color="#FFC225" />}
+        icon={<Icon name="ios-lock-closed-outline" size={18} color="#FFC225" />}
         error={errors.confirm_password}
       />
-      {/* <Icon name="eye-off-outline" size={20} color="#FFC225" /> */}
+      {/* <Icon name="eye-off-outline" size={18} color="#FFC225" /> */}
 
       <BottomContainer>
         <Button

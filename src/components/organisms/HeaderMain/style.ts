@@ -23,9 +23,8 @@ export const styleHeader = StyleSheet.create({
   },
   containerInfoUser: {
     flexDirection: "column",
-    paddingTop: 58,
-    paddingLeft: 32,
     maxHeight: 150,
+    marginTop: 16,
   },
   titleWelcome: {
     color: "#FFF",
@@ -40,6 +39,5 @@ export const styleHeader = StyleSheet.create({
     color: "#FFF",
     marginLeft: 58,
     marginRight: 32,
-    marginTop: 82,
   },
 });

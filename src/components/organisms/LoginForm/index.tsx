@@ -40,9 +40,8 @@ const LoginForm = () => {
     } catch (error) {
       Toast.show({
         type: "error",
-        text1: "Algum erro fdp aconteceu",
-        text2:
-          "Pode ser do servidor um sua imcopetência de digitar as coisas certa",
+        text1: "Opa, Erro!!!",
+        text2: "Provavelmente servidor...",
       });
     }
   }
@@ -54,7 +53,7 @@ const LoginForm = () => {
         name={"email"}
         placeholder={"Emeiu"}
         error={errors.email}
-        icon={<Icon name="ios-mail-outline" size={20} color="#FFC225" />}
+        icon={<Icon name="ios-mail-outline" size={18} color="#FFC225" />}
       />
 
       <ControlledInput
@@ -63,7 +62,7 @@ const LoginForm = () => {
         control={control}
         name={"password"}
         error={errors.password}
-        icon={<Icon name="ios-lock-closed-outline" size={20} color="#FFC225" />}
+        icon={<Icon name="ios-lock-closed-outline" size={18} color="#FFC225" />}
       />
       <BottomContainer>
         <Button textValue={"Entrar"} onClick={handleSubmit(handlerUserLogin)} />

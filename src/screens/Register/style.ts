@@ -6,5 +6,11 @@ export const styleKeyboard = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 80,
+    maxHeight: 558,
+  },
+  container: {
+    alignItems: "center",
+    paddingTop: 16,
   },
 });

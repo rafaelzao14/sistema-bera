@@ -4,7 +4,9 @@ export const style = StyleSheet.create({
   containerBottom: {
     flexDirection: "column",
     alignItems: "center",
-    marginTop: 48,
-    minHeight: 100,
+    backgroundColor: "transparent",
+    height: "30%",
+    marginTop: 32,
+    padding: 8,
   },
 });

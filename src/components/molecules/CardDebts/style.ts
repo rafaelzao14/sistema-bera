@@ -12,7 +12,8 @@ export const style = StyleSheet.create({
     height: 96,
     width: 360,
 
-    margin: 6,
+    marginTop: 8,
+    marginBottom: 8,
     paddingLeft: 16,
     paddingRight: 20,
 
@@ -33,7 +34,7 @@ export const style = StyleSheet.create({
     fontWeight: "bold",
   },
   userName: {
-    fontSize: 16,
+    fontSize: 14,
   },
   containerText: {
     justifyContent: "center",

@@ -15,7 +15,7 @@ const Login = () => {
       resizeMode="cover"
       style={style.backgroundImg}
     >
-      <SafeAreaView>
+      <SafeAreaView style={styleKeyboard.safeView}>
         <MainContainer>
           <LogoBeer />
           <KeyboardAwareScrollView

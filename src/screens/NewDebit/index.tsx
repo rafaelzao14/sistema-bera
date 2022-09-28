@@ -2,6 +2,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { useAnimationState } from "moti";
 import React from "react";
 import { View } from "react-native";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import FormDebt from "../../components/molecules/FormDebt";
 import SubHeader from "../../components/molecules/SubHeader";
@@ -36,9 +37,10 @@ const NewDebit = () => {
       <HeaderMain />
 
       <SubHeader tittle={"Novo Vacilo"} />
-
       <ViewAnimated>
-        <FormDebt />
+        <KeyboardAwareScrollView>
+          <FormDebt />
+        </KeyboardAwareScrollView>
       </ViewAnimated>
     </View>
   );

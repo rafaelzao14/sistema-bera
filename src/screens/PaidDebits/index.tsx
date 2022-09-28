@@ -28,22 +28,20 @@ const PaidDebits = () => {
   }, []);
 
   return (
-    <>
+    <View style={style.container}>
       <HeaderMain />
       <SubHeader tittle={"Vacilos pagos"} />
-      <View style={style.container}>
-        <ViewAnimated>
-          <FlatList
-            contentContainerStyle={style.containerList}
-            data={paidDebts}
-            renderItem={({ item, index }) => {
-              return <CardPaidDebts item={item} indexItem={index} />;
-            }}
-            keyExtractor={({ id }) => id.toString()}
-          />
-        </ViewAnimated>
-      </View>
-    </>
+      <ViewAnimated>
+        <FlatList
+          contentContainerStyle={style.containerList}
+          data={paidDebts}
+          renderItem={({ item, index }) => {
+            return <CardPaidDebts item={item} indexItem={index} />;
+          }}
+          keyExtractor={({ id }) => id.toString()}
+        />
+      </ViewAnimated>
+    </View>
   );
 };
 export default PaidDebits;

@@ -44,7 +44,19 @@ const PickerUser = ({ control, name, errorAlert }: PickerProps) => {
               dropDownContainerStyle={style.dropDown}
               dropDownDirection="TOP"
               onSelectItem={(event) => onChange(event.value)}
-              searchable
+              listMode="MODAL"
+              badgeStyle={{ borderColor: "#FFF" }}
+              listItemContainerStyle={style.containerLabel}
+              listItemLabelStyle={style.labelItem}
+              selectedItemLabelStyle={style.selectedItem}
+              selectedItemContainerStyle={style.containerSelectItem}
+              textStyle={style.text}
+              modalProps={{
+                animationType: "fade",
+              }}
+              modalContentContainerStyle={style.modalDebit}
+              modalTitle={"Qual Mongolão?"}
+              modalTitleStyle={style.modalDebit}
             />
             {errorAlert && <ErrorMsg msgError={`${errorAlert}`} />}
           </>

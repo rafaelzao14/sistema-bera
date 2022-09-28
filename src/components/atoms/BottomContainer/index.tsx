@@ -6,7 +6,7 @@ import { style } from "./style";
 interface BotProps {
   children: React.ReactNode;
 }
-const BottomContainer = ({ children }) => {
+const BottomContainer = ({ children }: BotProps) => {
   return <View style={style.containerBottom}>{children}</View>;
 };
 

@@ -41,6 +41,19 @@ const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
               setItems={() => {}}
               dropDownContainerStyle={style.dropDown}
               onSelectItem={(event) => onChange(event.value)}
+              listMode="MODAL"
+              badgeStyle={{ borderColor: "#FFF" }}
+              listItemContainerStyle={style.containerLabel}
+              listItemLabelStyle={style.labelItem}
+              selectedItemLabelStyle={style.selectedItem}
+              selectedItemContainerStyle={style.containerSelectItem}
+              textStyle={style.text}
+              modalProps={{
+                animationType: "fade",
+              }}
+              modalContentContainerStyle={style.modalDebit}
+              modalTitle={"Qual dos vacilos abaixo?"}
+              modalTitleStyle={style.modalDebit}
             />
             {errorAlert && <ErrorMsg msgError={`${errorAlert}`} />}
           </>

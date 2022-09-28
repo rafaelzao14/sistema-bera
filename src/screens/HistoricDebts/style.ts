@@ -7,6 +7,7 @@ export const style = StyleSheet.create({
   containerList: {
     alignItems: "center",
     width: 414,
-    marginTop: 16,
+    paddingTop: 32,
+    paddingBottom: 48,
   },
 });

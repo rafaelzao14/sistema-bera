@@ -13,8 +13,11 @@ const InputComment = ({ errorMsg, ...rest }: inputCommentProps) => {
     <>
       <TextInput
         style={style.input}
-        placeholder="Descreva melhor o B.O"
+        placeholder="Descreva melhor (máx.200 caracter)"
         placeholderTextColor="#AEA8A8"
+        maxLength={200}
+        multiline={true}
+        blurOnSubmit={true}
         {...rest}
       />
       {errorMsg && <ErrorMsg msgError={`${ErrorMsg}`} />}

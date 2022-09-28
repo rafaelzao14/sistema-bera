@@ -1,8 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { FlatList, RefreshControl, View } from "react-native";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
-import { getAllUser } from "../../http/services/userService";
-import { useAllUserStore } from "../../stores/useAllUser";
+import { getUserPerPage } from "../../http/services/userService";
 
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import CardDebt from "../../components/molecules/CardDebts";
@@ -16,7 +15,7 @@ export type User = {
 };
 
 const ListDebts = () => {
-  const { users, setUsers } = useAllUserStore();
+  const [users, setUsers] = useState<any>([] as any); //FIXME: NÂO ESQUECER DE ARRUMAR TIPAGEM
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(true);
   const [skip, setSkip] = useState(0);
@@ -25,14 +24,16 @@ const ListDebts = () => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getUsers();
   }, []);
+
   async function getUsers() {
+    //FIXME: Está fazendo loadingde tudo e duplicando alguns objetos recebidos da Api;
     try {
-      const response = await getAllUser(skip);
+      const response = await getUserPerPage(skip);
 
       const listUsers: User[] = response.data;
 
       setUsers([...users, ...listUsers]);
-      setSkip(skip + 5);
+
       setLoading(false);
       setRefreshing(false);
     } catch (error) {
@@ -44,6 +45,7 @@ const ListDebts = () => {
     <View style={style.container}>
       <SubHeader tittle={"Lista dos vacilões"} />
       {!loading ? null : <LoadingCircle />}
+
       <ViewAnimated>
         <FlatList
           contentContainerStyle={style.containerList}
@@ -54,11 +56,20 @@ const ListDebts = () => {
           keyExtractor={({ id }) => {
             return id.toString();
           }}
-          onEndReached={getUsers}
+          onEndReached={() => {
+            setSkip((prev) => prev + 4);
+            getUsers();
+          }}
           onEndReachedThreshold={0.1}
           ListFooterComponent={<LoadingCircle />}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={getUsers} />
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => {
+                setUsers([]);
+                getUsers();
+              }}
+            />
           }
         />
       </ViewAnimated>

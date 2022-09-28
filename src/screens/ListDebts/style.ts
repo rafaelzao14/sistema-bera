@@ -8,6 +8,11 @@ export const style = StyleSheet.create({
   containerList: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 32,
+    paddingTop: 32,
+    paddingBottom: 40,
+    marginBottom: 16,
+  },
+  endList: {
+    margin: 8,
   },
 });
