@@ -23,11 +23,13 @@ const ListDebts = () => {
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-use-before-define
     getUsers();
-  }, []);
+  }, [skip]);
 
   async function getUsers() {
     //FIXME: Está fazendo loadingde tudo e duplicando alguns objetos recebidos da Api;
     try {
+      console.log("getUsers, skip: ", skip);
+
       const response = await getUserPerPage(skip);
 
       const listUsers: User[] = response.data;
@@ -57,8 +59,9 @@ const ListDebts = () => {
             return id.toString();
           }}
           onEndReached={() => {
+            console.log("onEndReached");
             setSkip((prev) => prev + 4);
-            getUsers();
+            // getUsers();
           }}
           onEndReachedThreshold={0.1}
           ListFooterComponent={<LoadingCircle />}

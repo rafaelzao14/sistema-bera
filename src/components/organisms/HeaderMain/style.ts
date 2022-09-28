@@ -5,12 +5,19 @@ const width = Dimensions.get("window").width;
 
 export const styleHeader = StyleSheet.create({
   container: {
+    alignItems: "center",
+
+    backgroundColor: "#FFCA43",
+
     flex: 1,
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-around",
+
+    justifyContent: "space-between",
+
     maxHeight: 150,
-    backgroundColor: "#FFCA43",
+
+    paddingLeft: 32,
+
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -37,7 +44,7 @@ export const styleHeader = StyleSheet.create({
   },
   downIcon: {
     color: "#FFF",
-    marginLeft: 58,
-    marginRight: 32,
+    marginLeft: 132,
+    marginTop: 32,
   },
 });

@@ -6,6 +6,7 @@ import HeaderMain from "../../components/organisms/HeaderMain";
 
 import { useDebtStore } from "../../stores/useDebtStores";
 
+import CardEmpty from "../../assets/cardEmpty.svg";
 import CardPaidDebts from "../../components/molecules/CardPaidDebts";
 import { getPaids } from "../../http/services/debtService";
 import { style } from "./style";
@@ -32,14 +33,18 @@ const PaidDebits = () => {
       <HeaderMain />
       <SubHeader tittle={"Vacilos pagos"} />
       <ViewAnimated>
-        <FlatList
-          contentContainerStyle={style.containerList}
-          data={paidDebts}
-          renderItem={({ item, index }) => {
-            return <CardPaidDebts item={item} indexItem={index} />;
-          }}
-          keyExtractor={({ id }) => id.toString()}
-        />
+        {paidDebts.length === 0 ? (
+          <CardEmpty />
+        ) : (
+          <FlatList
+            contentContainerStyle={style.containerList}
+            data={paidDebts}
+            renderItem={({ item, index }) => {
+              return <CardPaidDebts item={item} indexItem={index} />;
+            }}
+            keyExtractor={({ id }) => id.toString()}
+          />
+        )}
       </ViewAnimated>
     </View>
   );

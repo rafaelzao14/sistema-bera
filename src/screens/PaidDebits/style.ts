@@ -7,7 +7,7 @@ export const style = StyleSheet.create({
   },
   containerList: {
     alignItems: "center",
-    backgroundColor: "#b2b2",
+
     maxHeight: "100%",
   },
 });

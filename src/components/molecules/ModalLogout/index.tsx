@@ -12,7 +12,13 @@ interface ModalProp {
 const ModalLogout = ({ visibility, controlVisible, doLogout }: ModalProp) => {
   return (
     <View>
-      <Modal isVisible={visibility}>
+      <Modal
+        isVisible={visibility}
+        animationIn="zoomIn"
+        animationInTiming={600}
+        animationOut="zoomOut"
+        animationOutTiming={600}
+      >
         <View style={style.container}>
           <Text>Já vai desgraça?</Text>
           <View style={style.containerButtons}>
