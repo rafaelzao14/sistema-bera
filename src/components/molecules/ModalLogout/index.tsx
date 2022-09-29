@@ -15,9 +15,10 @@ const ModalLogout = ({ visibility, controlVisible, doLogout }: ModalProp) => {
       <Modal
         isVisible={visibility}
         animationIn="zoomIn"
-        animationInTiming={600}
+        animationInTiming={300}
         animationOut="zoomOut"
-        animationOutTiming={600}
+        animationOutTiming={300}
+        backdropOpacity={0.5}
       >
         <View style={style.container}>
           <Text>Já vai desgraça?</Text>

@@ -9,6 +9,7 @@ import { useDebtStore } from "../../stores/useDebtStores";
 import CardEmpty from "../../assets/cardEmpty.svg";
 import CardPaidDebts from "../../components/molecules/CardPaidDebts";
 import { getPaids } from "../../http/services/debtService";
+import { sleep } from "../../utils/sleep";
 import { style } from "./style";
 
 const PaidDebits = () => {
@@ -17,6 +18,7 @@ const PaidDebits = () => {
   const listPaids = async () => {
     try {
       const res = await getPaids();
+      await sleep(1500);
       setPaidDebts(res.data);
       return res.data;
     } catch (error) {

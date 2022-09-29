@@ -1,9 +1,11 @@
+import { User } from "../../screens/ListDebts";
 import { API } from "../api";
 
 export const getUserPerPage = async (skipNum: number) => {
   try {
-    const res = await API.get(`/users?skip=${skipNum}&take=4`);
-    return res;
+    console.log("getting users", skipNum);
+    const res = await API.get<User[]>(`/users?skip=${skipNum}&take=8`);
+    return res.data;
   } catch (error) {
     throw error;
   }
