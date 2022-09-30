@@ -15,7 +15,7 @@ const CardPaidDebts = ({ item, indexItem }: DebtsDetailProps) => {
       <View style={style.containerElements}>
         <Text style={style.textName}>{item.debt.users.username}</Text>
         <Text style={style.textDescription}>
-          pago em: {format(new Date(item.createdAt), "dd-MM-yyyy")}
+          Pago em: {format(new Date(item.createdAt), "dd/MM/yyyy")}
         </Text>
         <Text style={style.textDescription}>{item.description}</Text>
       </View>

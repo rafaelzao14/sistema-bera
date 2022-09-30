@@ -1,54 +1,91 @@
-import React, { useEffect } from "react";
-import { FlatList, View } from "react-native";
-import ViewAnimated from "../../components/atoms/ViewAnimated";
+import React, { useCallback, useEffect, useState } from "react";
+import { FlatList, RefreshControl, Text, View } from "react-native";
 import SubHeader from "../../components/molecules/SubHeader";
 import HeaderMain from "../../components/organisms/HeaderMain";
 
-import { useDebtStore } from "../../stores/useDebtStores";
-
-import CardEmpty from "../../assets/cardEmpty.svg";
+import LoadingCircle from "../../components/atoms/LoadingCircle";
+import ViewAnimated from "../../components/atoms/ViewAnimated";
 import CardPaidDebts from "../../components/molecules/CardPaidDebts";
 import { getPaids } from "../../http/services/debtService";
-import { sleep } from "../../utils/sleep";
 import { style } from "./style";
 
 const PaidDebits = () => {
-  const { paidDebts, setPaidDebts } = useDebtStore();
+  const [paidDebts, setPaidDebts] = useState<any[]>([]);
+  const [skip, setSkip] = useState(0);
+  const [endedList, setEndedList] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
 
-  const listPaids = async () => {
-    try {
-      const res = await getPaids();
-      await sleep(1500);
-      setPaidDebts(res.data);
-      return res.data;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const getListPaids = useCallback(
+    async (skipNumber) => {
+      try {
+        setRefreshing(false);
+
+        const listDebts = await getPaids(skipNumber);
+
+        if (listDebts.length === 0) {
+          setEndedList(true);
+          return;
+        }
+        setPaidDebts([...paidDebts, ...listDebts]);
+        setSkip((prev) => prev + 5);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [skip]
+  );
 
   useEffect(() => {
-    listPaids();
-  }, []);
+    const initialPage = skip === 0;
+    const emptyHistoric = paidDebts.length === 0;
 
+    if (emptyHistoric && initialPage) {
+      getListPaids(skip);
+    }
+  }, [paidDebts, skip, endedList]);
+  function cleanAndRefresh() {
+    setRefreshing(true);
+    setPaidDebts([]);
+    setSkip((prev) => (prev = 0));
+    setEndedList(false);
+  }
   return (
-    <View style={style.container}>
+    <>
       <HeaderMain />
-      <SubHeader tittle={"Vacilos pagos"} />
-      <ViewAnimated>
-        {paidDebts.length === 0 ? (
-          <CardEmpty />
-        ) : (
+      <View style={style.container}>
+        <SubHeader tittle={"Vacilos pagos"} />
+        <ViewAnimated>
           <FlatList
-            contentContainerStyle={style.containerList}
             data={paidDebts}
             renderItem={({ item, index }) => {
               return <CardPaidDebts item={item} indexItem={index} />;
             }}
             keyExtractor={({ id }) => id.toString()}
+            onEndReachedThreshold={0.1}
+            onEndReached={() => {
+              if (endedList) {
+                return;
+              }
+              getListPaids(skip);
+            }}
+            ListFooterComponent={() => {
+              if (endedList) {
+                return <Text style={style.endList}>Fim dos nomes</Text>;
+              }
+              if (!refreshing) {
+                return <LoadingCircle />;
+              }
+            }}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={cleanAndRefresh}
+              />
+            }
           />
-        )}
-      </ViewAnimated>
-    </View>
+        </ViewAnimated>
+      </View>
+    </>
   );
 };
 export default PaidDebits;

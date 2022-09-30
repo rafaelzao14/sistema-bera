@@ -4,16 +4,16 @@ import GlassBeer from "../../../assets/glassBeer.svg";
 import { style } from "./style";
 
 interface DebtsDetailProps {
-  item?: any;
+  item: any;
   //FIXME: Concertar tipagem
   indexItem?: number;
 }
 const CardDeitailDebts = ({ item, indexItem }: DebtsDetailProps) => {
   return (
     <View style={style.container}>
-      <View>
-        <Text style={style.textReason}>Motivo: {item.reason.description}</Text>
-        <Text style={style.textDescription}>{item.description}</Text>
+      <View style={style.containerDescriptions}>
+        <Text style={style.textReason}>{item.reason.description}</Text>
+        <Text style={style.textDescription}>Motivo:{item.description} </Text>
       </View>
       <View style={style.containerInfo}>
         <GlassBeer />

@@ -2,12 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
   container: {
-    height: "100%",
-    // backgroundColor: "red",
+    flex: 1,
+    flexDirection: "column",
   },
-  containerList: {
-    alignItems: "center",
-
-    maxHeight: "100%",
+  endList: {
+    padding: 24,
+    alignSelf: "center",
+    marginBottom: 32,
   },
 });

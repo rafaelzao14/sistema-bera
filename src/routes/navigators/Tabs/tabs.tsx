@@ -33,7 +33,7 @@ const TabNavigator = () => {
         name="NewDebit"
         component={NewDebit}
         options={{
-          tabBarLabel: "Nova Dívida",
+          tabBarLabel: "Novo Vacilo",
           tabBarIcon: () => <NewDebitIcon style={style.mainIcon} />,
           tabBarActiveTintColor: "#FFF",
           tabBarInactiveTintColor: "#BC6600",

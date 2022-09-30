@@ -24,7 +24,7 @@ const ListDebts = () => {
   const getUsers = useCallback(async () => {
     try {
       setRefreshing(false);
-      await sleep(1000);
+      await sleep(500);
       const newUsers = await getUserPerPage(skip);
 
       if (newUsers.length === 0) {

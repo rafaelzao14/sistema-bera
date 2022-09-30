@@ -5,16 +5,18 @@ export const style = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
+    alignSelf: "center",
+
     justifyContent: "space-around",
 
     backgroundColor: "#CFCFCF",
-    maxHeight: 264,
+    maxHeight: 278,
     maxWidth: "80%",
     // maxWidth: 380,
     minHeight: 100,
     minWidth: 340,
 
-    marginTop: 16,
+    marginTop: 24,
 
     borderRadius: 12,
     shadowColor: "#000",
@@ -31,14 +33,16 @@ export const style = StyleSheet.create({
     alignItems: "flex-start",
     width: "80%",
     paddingLeft: 8,
+    paddingTop: 16,
   },
   containerInfo: {
     paddingRight: 16,
+    paddingTop: 16,
   },
   textName: {
     fontWeight: "bold",
   },
   textDescription: {
-    fontSize: 11,
+    fontSize: 10,
   },
 });

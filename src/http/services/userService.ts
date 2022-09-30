@@ -3,7 +3,6 @@ import { API } from "../api";
 
 export const getUserPerPage = async (skipNum: number) => {
   try {
-    console.log("getting users", skipNum);
     const res = await API.get<User[]>(`/users?skip=${skipNum}&take=8`);
     return res.data;
   } catch (error) {
@@ -26,11 +25,11 @@ export const getAllUser = async () => {
     throw error;
   }
 };
-export const getInfoUserCard = async (id: any) => {
+export const getInfoUserCard = async (id, skipNumber) => {
   try {
-    const res = await API.get(`/users/${id}/debts`);
+    const res = await API.get(`/users/${id}/debts?skip=${skipNumber}&take=4`);
 
-    return res;
+    return res.data;
   } catch (error) {
     throw error;
   }

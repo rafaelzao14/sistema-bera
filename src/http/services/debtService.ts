@@ -20,11 +20,11 @@ export const getReasons = async () => {
   }
 };
 
-export const getPaids = async () => {
+export const getPaids = async (skipNumber) => {
   try {
-    const res = await API.get("/payments");
+    const res = await API.get(`/payments?skip=${skipNumber}&take=5`);
 
-    return res;
+    return res.data;
   } catch (error) {
     throw error;
   }

@@ -5,6 +5,11 @@
     "assetBundlePatterns": ["**/*"],
     "icon": "",
     "version": "1.0.0",
+    "splash": {
+      "image": "./src/assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#BE8A04"
+    },
     "ios": {
       "bundleIdentifier": "sistema.beras",
       "buildNumber": "1.0.0"

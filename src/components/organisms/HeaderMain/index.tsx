@@ -1,4 +1,3 @@
-import jwt_decode, { JwtPayload } from "jwt-decode";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useAuthStore } from "../../../stores/AuthLogin";
@@ -6,9 +5,7 @@ import ModalLogout from "../../molecules/ModalLogout";
 import { styleHeader } from "./style";
 
 const HeaderMain = () => {
-  const { token, logOut } = useAuthStore();
-
-  const decod = jwt_decode<JwtPayload>(token);
+  const { userInfo, logOut } = useAuthStore();
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -20,7 +17,7 @@ const HeaderMain = () => {
     <View style={styleHeader.container}>
       <View style={styleHeader.containerInfoUser}>
         <Text style={styleHeader.titleWelcome}>Bem vindo,</Text>
-        <Text style={styleHeader.nameUser}>{decod.username}</Text>
+        <Text style={styleHeader.nameUser}>{userInfo.username}</Text>
       </View>
       <View>
         <TouchableOpacity onPress={() => toogleModal()}>
