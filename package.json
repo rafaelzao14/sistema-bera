@@ -17,6 +17,7 @@
     "@react-navigation/bottom-tabs": "^6.3.3",
     "@react-navigation/native": "^6.0.12",
     "@react-navigation/native-stack": "^6.8.0",
+    "@shipt/segmented-arc-for-react-native": "^1.0.1",
     "@types/react-native-navigation": "^2.0.0",
     "axios": "^0.27.2",
     "date-fns": "^2.29.3",

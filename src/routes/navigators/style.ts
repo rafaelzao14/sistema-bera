@@ -2,8 +2,10 @@ import { StyleSheet } from "react-native";
 
 export const style = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#FFCA43",
-    height: 112,
+    maxHeight: 120,
+    width: "100%",
     color: "#BC6600",
     alignItems: "center",
     borderTopColor: "transparent",
@@ -34,7 +36,6 @@ export const style = StyleSheet.create({
     shadowRadius: 8.3,
   },
   mainIcon: {
-    marginBottom: 12,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,

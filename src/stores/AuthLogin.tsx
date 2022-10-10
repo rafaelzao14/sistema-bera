@@ -20,6 +20,7 @@ export const store: (set, get) => AuthState = (set) => ({
     set(() => ({
       token: token,
       isLogged: true,
+      //isAdmin: true
       userInfo: jwt_decode<JwtPayload>(token),
     }));
   },
@@ -27,6 +28,7 @@ export const store: (set, get) => AuthState = (set) => ({
     set(() => ({
       token: "",
       isLogged: false,
+      //isAdmin: false,
       userInfo: "",
     }));
   },

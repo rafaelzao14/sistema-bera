@@ -6,6 +6,7 @@ import HeaderMain from "../../components/organisms/HeaderMain";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import CardPaidDebts from "../../components/molecules/CardPaidDebts";
+import HeaderAdmin from "../../components/organisms/HeaderAdmin";
 import { getPaids } from "../../http/services/debtService";
 import { style } from "./style";
 
@@ -14,6 +15,7 @@ const PaidDebits = () => {
   const [skip, setSkip] = useState(0);
   const [endedList, setEndedList] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const isAdmin = true;
 
   const getListPaids = useCallback(
     async (skipNumber) => {
@@ -51,7 +53,8 @@ const PaidDebits = () => {
   }
   return (
     <>
-      <HeaderMain />
+      {isAdmin ? <HeaderAdmin /> : <HeaderMain />}
+      {/* <HeaderMain /> */}
       <View style={style.container}>
         <SubHeader tittle={"Vacilos pagos"} />
         <ViewAnimated>
