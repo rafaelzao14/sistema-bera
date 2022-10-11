@@ -6,6 +6,7 @@ import { styleHeader } from "./style";
 
 const HeaderAdmin = () => {
   const { userInfo, logOut } = useAuthStore();
+  console.log(userInfo);
 
   const [openModal, setOpenModal] = useState(false);
 

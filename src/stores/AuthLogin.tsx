@@ -2,11 +2,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 import create from "zustand";
 import { persist } from "zustand/middleware";
+import { UserRole } from "../@types/roleEnum";
 
 type AuthState = {
   isLogged: boolean;
   token: string;
-  userInfo: { email: string; username: string };
+  userInfo: { email: string; username: string; role: UserRole };
   login: (token: string) => void;
   logOut: () => void;
 };
@@ -14,7 +15,7 @@ type AuthState = {
 export const store: (set, get) => AuthState = (set) => ({
   isLogged: false,
   token: "",
-  userInfo: { email: "", username: "" },
+  userInfo: { email: "", username: "", role: UserRole.USER },
 
   login: (token) => {
     set(() => ({

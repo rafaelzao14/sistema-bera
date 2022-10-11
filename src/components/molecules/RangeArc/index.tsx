@@ -1,12 +1,14 @@
 import { SegmentedArc } from "@shipt/segmented-arc-for-react-native";
 import React, { useState } from "react";
 import { Pressable, Text, View } from "react-native";
+import { style } from "./style";
 
 interface SegmentedProps {
   rangeValue?: number;
   description?: string;
 }
 const RangeArc = ({ rangeValue, description }: SegmentedProps) => {
+  //FIXME:Configurar recebimento Props rangeValue API
   const [showArcRanges, setShowArcRanges] = useState<boolean>(false);
 
   const ranges: string[] = ["0", "25", "50", "75", "100..."];
@@ -19,29 +21,29 @@ const RangeArc = ({ rangeValue, description }: SegmentedProps) => {
       scale: 0.25,
       filledColor: "#78F5CA",
       emptyColor: "#D9D9D9",
-      data: { label: "Green" },
+      data: { label: "de boas" },
     },
     {
       scale: 0.25,
       filledColor: "#6E73FF",
       emptyColor: "#D9D9D9",
-      data: { label: "Purple" },
+      data: { label: "aumentando os vacilos" },
     },
     {
       scale: 0.25,
       filledColor: "#F5E478",
       emptyColor: "#D9D9D9",
-      data: { label: "Yellow" },
+      data: { label: "muita burrice acumulando" },
     },
     {
       scale: 0.25,
       filledColor: "#FF746E",
       emptyColor: "#D9D9D9",
-      data: { label: "Red" },
+      data: { label: "Crítico demais" },
     },
   ];
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={style.container}>
       <SegmentedArc
         segments={segments}
         fillValue={rangeValue}
@@ -50,6 +52,7 @@ const RangeArc = ({ rangeValue, description }: SegmentedProps) => {
         showArcRanges={showArcRanges}
         ranges={ranges}
         spaceBetweenSegments={0}
+        radius={150}
       >
         {(metaData) => (
           <Pressable onPress={handlePress} style={{ alignItems: "center" }}>

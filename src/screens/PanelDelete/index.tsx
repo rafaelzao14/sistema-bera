@@ -1,70 +1,70 @@
-import React, { ReactNode, useCallback, useEffect, useState } from "react";
-import { FlatList, RefreshControl, Text, View } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  FlatList,
+  RefreshControl,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
-import { getUserPerPage } from "../../http/services/userService";
-
-import ViewAnimated from "../../components/atoms/ViewAnimated";
 import CardDebt from "../../components/molecules/CardDebts";
 import SubHeader from "../../components/molecules/SubHeader";
-import { sleep } from "../../utils/sleep";
+import HeaderAdmin from "../../components/organisms/HeaderAdmin";
+import { getDebts } from "../../http/services/debtService";
+import { User } from "../ListDebts";
 import { style } from "./style";
 
-export type User = {
-  username: ReactNode;
-  debtQuantity: number;
-  id: number;
-};
-
-const ListDebts = () => {
-  const [users, setUsers] = useState<any[]>([]); //FIXME: NÂO ESQUECER DE ARRUMAR TIPAGEM
+const PanelDelete = () => {
+  const [debts, setDebts] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [endedList, setEndedList] = useState(false);
   const [skip, setSkip] = useState(0);
+  const [endedList, setEndedList] = useState(false);
 
-  const getUsers = useCallback(async () => {
+  const listDebts = useCallback(async () => {
     try {
       setRefreshing(false);
-      await sleep(500);
-      const newUsers = await getUserPerPage(skip);
 
-      if (newUsers.length === 0) {
+      const res = await getDebts(skip);
+
+      if (res.length === 0) {
         setEndedList(true);
         return;
       }
-
-      setUsers([...users, ...newUsers]);
+      setLoading(false);
       setSkip((prev) => prev + 8);
+      setDebts([...debts, ...res]);
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   }, [skip]);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-use-before-define
-    const emptyUsers = users.length === 0;
-    const initialPage = skip === 0;
-
-    if (emptyUsers && initialPage && !endedList) {
-      getUsers();
+    if (debts.length === 0) {
+      listDebts();
     }
-  }, [skip, users, endedList]);
+  }, [debts]);
 
   function cleanAndRefresh() {
     setRefreshing(true);
-    setUsers([]);
+    setDebts([]);
     setSkip((prev) => (prev = 0));
     setEndedList(false);
   }
   return (
     <View style={style.container}>
-      <SubHeader tittle={"Lista dos vacilões"} />
-
-      <ViewAnimated>
+      <HeaderAdmin />
+      <SubHeader tittle={"Deletar Dívidas"} />
+      <View>
         <FlatList
-          contentContainerStyle={style.containerList}
-          data={users}
+          data={debts}
           renderItem={({ item, index }) => (
-            <CardDebt userDetails={item} indexItem={index} />
+            <View>
+              <CardDebt userDetails={item} indexItem={index} />
+              <TouchableOpacity>
+                <Text>Excluir</Text>
+              </TouchableOpacity>
+            </View>
           )}
           keyExtractor={({ id }) => {
             return id.toString();
@@ -74,7 +74,7 @@ const ListDebts = () => {
             if (endedList) {
               return;
             }
-            getUsers();
+            listDebts();
           }}
           ListFooterComponent={() => {
             if (endedList) {
@@ -91,9 +91,9 @@ const ListDebts = () => {
             />
           }
         />
-      </ViewAnimated>
+      </View>
     </View>
   );
 };
 
-export default ListDebts;
+export default PanelDelete;

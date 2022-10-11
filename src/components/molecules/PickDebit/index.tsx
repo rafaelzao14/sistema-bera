@@ -7,11 +7,9 @@ import { style } from "./style";
 type PickerProps = {
   control?: Control<any>;
   name?: string;
-  errorAlert?: any; //FIXME: arrumar tipagem;
-
-  //FIXME: Arrumar tipagem, só está por que o formato da resposta da API não está definido;
+  errorAlert?: string;
 };
-//Vai receber por props uma array para listar os dados de todos usuários cadastrados.
+
 const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
   const { reasons } = useDebtStore();
   const debit = reasons.map((item) => {

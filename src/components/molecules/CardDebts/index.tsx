@@ -6,8 +6,11 @@ import GlassBeer from "../../../assets/glassBeer.svg";
 import { style } from "./style";
 
 type CardProps = {
-  userDetails?: any;
-  //FIXME: Arrumar tipagem;
+  userDetails?: {
+    id?: number;
+    username?: string;
+    debtQuantity?: number;
+  };
 
   indexItem?: number;
 };

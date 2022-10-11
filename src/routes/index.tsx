@@ -4,7 +4,6 @@ import React from "react";
 
 import { useAuthStore } from "../stores/AuthLogin";
 import AuthStack from "./navigators/Stacks/stacks";
-import MenuAdm from "./navigators/Tabs/menuAdm";
 import TabNavigator from "./navigators/Tabs/tabs";
 
 const Index = () => {
@@ -25,18 +24,16 @@ const Index = () => {
 
 
   */
+  const { isLogged } = useAuthStore();
+  // const isAdmin = true;
+
   function validateAuth() {
     if (isLogged) {
-      if (!isAdmin) {
-        return <TabNavigator />;
-      }
-      return <MenuAdm />;
+      return <TabNavigator />;
     } else {
       return <AuthStack />;
     }
   }
-  const { isLogged } = useAuthStore();
-  const isAdmin = true;
 
   return <NavigationContainer>{validateAuth()}</NavigationContainer>;
 };

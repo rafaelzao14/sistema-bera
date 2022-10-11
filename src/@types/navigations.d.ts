@@ -5,6 +5,8 @@ export declare global {
       Login: undefined;
       Debits: undefined;
       DebitsUser: undefined;
+      PanelDelete: undefined;
+      PanelUserManager: undefined;
     }
   }
 }

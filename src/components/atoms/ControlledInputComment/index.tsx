@@ -6,7 +6,7 @@ import InputComment from "../InputComment";
 interface ControllerProps extends InputProps {
   control?: Control<any>;
   name?: string;
-  errorAlert?: any; //FIXME: arrumar tipagem;
+  errorAlert?: string;
 }
 
 const ControlledComment = ({
