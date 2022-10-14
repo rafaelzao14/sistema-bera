@@ -7,6 +7,7 @@ export declare global {
       DebitsUser: undefined;
       PanelDelete: undefined;
       PanelUserManager: undefined;
+      PanelReasonManager: undefined;
     }
   }
 }

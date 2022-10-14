@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import SmallIconBeer from "../../assets/beerMugIconSmall.svg";
+import ManagerReasonIcon from "../../assets/reasonManagerIcon.svg";
 import SettingIcon from "../../assets/settingIcon.svg";
 import StackIcon from "../../assets/stackCheckIcon.svg";
 import TrashIcon from "../../assets/trashIcon.svg";
@@ -44,6 +45,14 @@ const PanelAdm = () => {
             >
               <SettingIcon />
               <Text style={style.textButton}>Gerenciar Usuários</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={style.button}
+              onPress={() => navigation.navigate("PanelReasonManager")}
+            >
+              <ManagerReasonIcon />
+              <Text style={style.textButton}>Gerenciar Dívidas</Text>
             </TouchableOpacity>
           </View>
         </View>

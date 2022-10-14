@@ -7,14 +7,20 @@ import ViewAnimated from "../../components/atoms/ViewAnimated";
 import HeaderMain from "../../components/organisms/HeaderMain";
 
 import { useRoute } from "@react-navigation/native";
+import { UserRole } from "../../@types/roleEnum";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
+import HeaderAdmin from "../../components/organisms/HeaderAdmin";
 import { getInfoUserCard } from "../../http/services/userService";
+import { useAuthStore } from "../../stores/AuthLogin";
 import { sleep } from "../../utils/sleep";
 import { style } from "./style";
 
 const HistoricDebts = () => {
   const route = useRoute();
   const { name, id } = route.params;
+
+  const { userInfo } = useAuthStore();
+  const isAdm = userInfo.role === UserRole.ADMIN;
 
   const [userDebts, setUserDebts] = useState<any[]>([]); //FIXME: corrigir tipagem
   const [skip, setSkip] = useState(0);
@@ -59,7 +65,7 @@ const HistoricDebts = () => {
 
   return (
     <>
-      <HeaderMain />
+      {isAdm ? <HeaderAdmin /> : <HeaderMain />}
 
       <View style={style.container}>
         <SubHeader tittle={`Vacilos do ${name} `} />

@@ -7,8 +7,9 @@ export const style = StyleSheet.create({
     marginTop: 5,
   },
   text: {
-    color: "#BC6600",
     marginTop: 8,
     marginRight: 5,
+    fontWeight: "bold",
+    fontSize: 40,
   },
 });

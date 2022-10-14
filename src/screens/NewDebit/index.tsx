@@ -3,10 +3,13 @@ import { useAnimationState } from "moti";
 import React from "react";
 import { View } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { UserRole } from "../../@types/roleEnum";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import FormDebt from "../../components/molecules/FormDebt";
 import SubHeader from "../../components/molecules/SubHeader";
+import HeaderAdmin from "../../components/organisms/HeaderAdmin";
 import HeaderMain from "../../components/organisms/HeaderMain";
+import { useAuthStore } from "../../stores/AuthLogin";
 
 import { style } from "./style";
 
@@ -26,6 +29,9 @@ const NewDebit = () => {
     }
     animationState.transitionTo("open");
   };
+  const { userInfo } = useAuthStore();
+
+  const isAdm = userInfo.role === UserRole.ADMIN;
 
   useFocusEffect(() => {
     onPress("open");
@@ -34,7 +40,7 @@ const NewDebit = () => {
 
   return (
     <View style={style.container}>
-      <HeaderMain />
+      {isAdm ? <HeaderAdmin /> : <HeaderMain />}
 
       <SubHeader tittle={"Novo Vacilo"} />
       <ViewAnimated>

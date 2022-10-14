@@ -1,25 +1,22 @@
 import React, { useState } from "react";
-import { Control, Controller } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useDebtStore } from "../../../stores/useDebtStores";
-import ErrorMsg from "../../atoms/ErrorMsg";
 import { style } from "./style";
-export interface PickerProps {
-  control?: Control<any>;
+
+interface PickReasonProp {
+  control?: any;
   name?: string;
-  errorAlert?: string;
 }
 
-const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
-  const { reasons } = useDebtStore();
-  const debit = reasons.map((item) => {
-    return {
-      label: item.description,
-      value: item.id,
-    };
-  });
+const PickReason = ({ control, name }: PickReasonProp) => {
   const [open, setOpen] = useState(false);
 
+  const listQuantity = [
+    { label: "1 Bera", value: 1 },
+    { label: "2 Bera", value: 2 },
+    { label: "3 Bera", value: 3 },
+    { label: "4 Bera", value: 4 },
+  ];
   return (
     <Controller
       control={control}
@@ -33,7 +30,7 @@ const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
               containerStyle={style.insideStyle}
               open={open}
               value={value}
-              items={debit}
+              items={listQuantity}
               setOpen={setOpen}
               setValue={() => {}}
               setItems={() => {}}
@@ -53,7 +50,7 @@ const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
               modalTitle={"Qual dos vacilos abaixo?"}
               modalTitleStyle={style.modalDebit}
             />
-            {errorAlert && <ErrorMsg msgError={`${errorAlert}`} />}
+            {/* {errorAlert && <ErrorMsg msgError={`${errorAlert}`} />} */}
           </>
         );
       }}
@@ -61,4 +58,4 @@ const PickerDebit = ({ control, name, errorAlert }: PickerProps) => {
   );
 };
 
-export default PickerDebit;
+export default PickReason;

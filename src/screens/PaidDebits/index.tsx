@@ -3,11 +3,13 @@ import { FlatList, RefreshControl, Text, View } from "react-native";
 import SubHeader from "../../components/molecules/SubHeader";
 import HeaderMain from "../../components/organisms/HeaderMain";
 
+import { UserRole } from "../../@types/roleEnum";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import CardPaidDebts from "../../components/molecules/CardPaidDebts";
 import HeaderAdmin from "../../components/organisms/HeaderAdmin";
 import { getPaids } from "../../http/services/debtService";
+import { useAuthStore } from "../../stores/AuthLogin";
 import { style } from "./style";
 
 const PaidDebits = () => {
@@ -15,7 +17,9 @@ const PaidDebits = () => {
   const [skip, setSkip] = useState(0);
   const [endedList, setEndedList] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const isAdmin = true;
+  const { userInfo } = useAuthStore();
+
+  const isAdm = userInfo.role === UserRole.ADMIN;
 
   const getListPaids = useCallback(
     async (skipNumber) => {
@@ -30,9 +34,7 @@ const PaidDebits = () => {
         }
         setPaidDebts([...paidDebts, ...listDebts]);
         setSkip((prev) => prev + 5);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     },
     [skip]
   );
@@ -53,8 +55,7 @@ const PaidDebits = () => {
   }
   return (
     <>
-      {isAdmin ? <HeaderAdmin /> : <HeaderMain />}
-      {/* <HeaderMain /> */}
+      {isAdm ? <HeaderAdmin /> : <HeaderMain />}
       <View style={style.container}>
         <SubHeader tittle={"Vacilos pagos"} />
         <ViewAnimated>

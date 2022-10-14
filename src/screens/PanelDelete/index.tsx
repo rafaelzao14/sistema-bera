@@ -1,98 +1,112 @@
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  FlatList,
-  RefreshControl,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, RefreshControl, Text, View } from "react-native";
+import { UserRole } from "../../@types/roleEnum";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
-import CardDebt from "../../components/molecules/CardDebts";
+import ViewAnimated from "../../components/atoms/ViewAnimated";
+import CardGeneralDebt from "../../components/molecules/CardGeneralDebt";
+import ModalDelete from "../../components/molecules/ModalDelete";
 import SubHeader from "../../components/molecules/SubHeader";
 import HeaderAdmin from "../../components/organisms/HeaderAdmin";
-import { getDebts } from "../../http/services/debtService";
-import { User } from "../ListDebts";
+import HeaderMain from "../../components/organisms/HeaderMain";
+import { getUserPerPage } from "../../http/services/userService";
+import { useAuthStore } from "../../stores/AuthLogin";
+import { sleep } from "../../utils/sleep";
 import { style } from "./style";
 
 const PanelDelete = () => {
-  const [debts, setDebts] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const [skip, setSkip] = useState(0);
-  const [endedList, setEndedList] = useState(false);
+  const { userInfo } = useAuthStore();
+  const isAdm = userInfo.role === UserRole.ADMIN;
 
-  const listDebts = useCallback(async () => {
+  const [users, setUsers] = useState<any[]>([]); //FIXME: NÂO ESQUECER DE ARRUMAR TIPAGEM
+  const [refreshing, setRefreshing] = useState(false);
+  const [endedList, setEndedList] = useState(false);
+  const [skip, setSkip] = useState(0);
+
+  const [openModal, setOpenModal] = useState(false);
+
+  function toogleModal() {
+    setOpenModal(true);
+  }
+
+  const getUsers = useCallback(async () => {
     try {
       setRefreshing(false);
+      await sleep(500);
+      const newUsers = await getUserPerPage(skip);
 
-      const res = await getDebts(skip);
-
-      if (res.length === 0) {
+      if (newUsers.length === 0) {
         setEndedList(true);
         return;
       }
-      setLoading(false);
+
+      setUsers([...users, ...newUsers]);
       setSkip((prev) => prev + 8);
-      setDebts([...debts, ...res]);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   }, [skip]);
 
   useEffect(() => {
-    if (debts.length === 0) {
-      listDebts();
+    // eslint-disable-next-line @typescript-eslint/no-use-before-define
+    const emptyUsers = users.length === 0;
+    const initialPage = skip === 0;
+
+    if (emptyUsers && initialPage && !endedList) {
+      getUsers();
     }
-  }, [debts]);
+  }, [skip, users, endedList]);
 
   function cleanAndRefresh() {
     setRefreshing(true);
-    setDebts([]);
+    setUsers([]);
     setSkip((prev) => (prev = 0));
     setEndedList(false);
   }
   return (
-    <View style={style.container}>
-      <HeaderAdmin />
-      <SubHeader tittle={"Deletar Dívidas"} />
-      <View>
-        <FlatList
-          data={debts}
-          renderItem={({ item, index }) => (
-            <View>
-              <CardDebt userDetails={item} indexItem={index} />
-              <TouchableOpacity>
-                <Text>Excluir</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-          keyExtractor={({ id }) => {
-            return id.toString();
-          }}
-          onEndReachedThreshold={0.1}
-          onEndReached={() => {
-            if (endedList) {
-              return;
+    <>
+      {isAdm ? <HeaderAdmin /> : <HeaderMain />}
+      <SubHeader tittle={"Excluir Dívidas"} />
+      <View style={style.container}>
+        <ViewAnimated>
+          <FlatList
+            contentContainerStyle={style.containerList}
+            data={users}
+            renderItem={({ item, index }) => (
+              <CardGeneralDebt
+                userDetails={item}
+                indexItem={index}
+                toogle={toogleModal}
+              />
+            )}
+            keyExtractor={({ id }) => {
+              return id.toString();
+            }}
+            onEndReachedThreshold={0.1}
+            onEndReached={() => {
+              if (endedList) {
+                return;
+              }
+              getUsers();
+            }}
+            ListFooterComponent={() => {
+              if (endedList) {
+                return <Text style={{ padding: 16 }}>Fim dos nomes</Text>;
+              }
+              if (!refreshing) {
+                return <LoadingCircle />;
+              }
+            }}
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={cleanAndRefresh}
+              />
             }
-            listDebts();
-          }}
-          ListFooterComponent={() => {
-            if (endedList) {
-              return <Text style={{ padding: 16 }}>Fim dos nomes</Text>;
-            }
-            if (!refreshing) {
-              return <LoadingCircle />;
-            }
-          }}
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={cleanAndRefresh}
-            />
-          }
-        />
+          />
+        </ViewAnimated>
       </View>
-    </View>
+      <ModalDelete visibility={openModal} controlVisible={setOpenModal} />
+    </>
   );
 };
 
