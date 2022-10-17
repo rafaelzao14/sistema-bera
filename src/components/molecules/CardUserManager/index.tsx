@@ -19,17 +19,6 @@ type CardProps = {
 const CardUserManager = ({ userDetails, indexItem, toogle }: CardProps) => {
   const navigation = useNavigation();
 
-  function handleRenderCard(i) {
-    try {
-      navigation.navigate("DebitsUser", {
-        id: userDetails.id,
-        name: userDetails.username,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <View style={style.card}>
       <View style={style.containerName}>

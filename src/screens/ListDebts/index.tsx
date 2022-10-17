@@ -16,7 +16,7 @@ export type User = {
 };
 
 const ListDebts = () => {
-  const [users, setUsers] = useState<any[]>([]); //FIXME: NÂO ESQUECER DE ARRUMAR TIPAGEM
+  const [users, setUsers] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
   const [endedList, setEndedList] = useState(false);
   const [skip, setSkip] = useState(0);

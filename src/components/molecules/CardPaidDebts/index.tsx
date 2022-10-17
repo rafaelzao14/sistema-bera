@@ -5,8 +5,15 @@ import Checked from "../../../assets/checked.svg";
 import { style } from "./style";
 
 interface DebtsDetailProps {
-  item?: any;
-  //FIXME: Concertar tipagem
+  item?: {
+    debt?: {
+      users?: {
+        username: string;
+      };
+    };
+    createdAt: string;
+    description?: string;
+  };
   indexItem?: number;
 }
 const CardPaidDebts = ({ item, indexItem }: DebtsDetailProps) => {

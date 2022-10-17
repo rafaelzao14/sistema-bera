@@ -13,7 +13,8 @@ import { useAuthStore } from "../../stores/AuthLogin";
 import { style } from "./style";
 
 const PaidDebits = () => {
-  const [paidDebts, setPaidDebts] = useState<any[]>([]);
+  const [paidDebts, setPaidDebts] = useState([]);
+  console.log("PAID DEBITS: ", paidDebts);
   const [skip, setSkip] = useState(0);
   const [endedList, setEndedList] = useState(false);
   const [refreshing, setRefreshing] = useState(false);

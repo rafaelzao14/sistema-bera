@@ -6,7 +6,7 @@ import SubHeader from "../../components/molecules/SubHeader";
 import ViewAnimated from "../../components/atoms/ViewAnimated";
 import HeaderMain from "../../components/organisms/HeaderMain";
 
-import { useRoute } from "@react-navigation/native";
+import { ParamListBase, useRoute } from "@react-navigation/native";
 import { UserRole } from "../../@types/roleEnum";
 import LoadingCircle from "../../components/atoms/LoadingCircle";
 import HeaderAdmin from "../../components/organisms/HeaderAdmin";
@@ -17,12 +17,12 @@ import { style } from "./style";
 
 const HistoricDebts = () => {
   const route = useRoute();
-  const { name, id } = route.params;
+  const { name, id } = route.params as ParamListBase;
 
   const { userInfo } = useAuthStore();
   const isAdm = userInfo.role === UserRole.ADMIN;
 
-  const [userDebts, setUserDebts] = useState<any[]>([]); //FIXME: corrigir tipagem
+  const [userDebts, setUserDebts] = useState([]);
   const [skip, setSkip] = useState(0);
   const [endedList, setEndedList] = useState(false);
   const [refreshing, setRefreshing] = useState(false);

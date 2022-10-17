@@ -14,16 +14,22 @@ type CardProps = {
 
   indexItem?: number;
 };
+interface ParamsRoute {
+  id: number;
+  name: string;
+}
 
 const CardDebt = ({ userDetails, indexItem }: CardProps) => {
   const navigation = useNavigation();
 
+  const params: ParamsRoute = {
+    id: userDetails.id,
+    name: userDetails.username,
+  };
+
   function handleRenderCard(i) {
     try {
-      navigation.navigate("DebitsUser", {
-        id: userDetails.id,
-        name: userDetails.username,
-      });
+      navigation.navigate("DebitsUser", params);
     } catch (error) {
       console.log(error);
     }

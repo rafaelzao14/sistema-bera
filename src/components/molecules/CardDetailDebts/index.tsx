@@ -4,8 +4,17 @@ import GlassBeer from "../../../assets/glassBeer.svg";
 import { style } from "./style";
 
 interface DebtsDetailProps {
-  item: any;
-  //FIXME: Concertar tipagem
+  item: {
+    description: string;
+    id: number;
+    paymentId: 21;
+    reason: {
+      description: string;
+      id: number;
+      quantity: number;
+    };
+    userId: number;
+  };
   indexItem?: number;
 }
 const CardDeitailDebts = ({ item, indexItem }: DebtsDetailProps) => {
