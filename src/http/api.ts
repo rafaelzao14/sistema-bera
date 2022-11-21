@@ -1,8 +1,9 @@
 import axios from "axios";
+import { API_URL } from "../../env";
 import { useAuthStore } from "../stores/AuthLogin";
 
 export const API = axios.create({
-  baseURL: "http://172.25.0.153:3000/api/v1",
+  baseURL: API_URL,
   timeout: 3000,
 });
 

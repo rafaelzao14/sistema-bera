@@ -3,7 +3,7 @@
     "name": "sistema-beras",
     "slug": "sistema-beras",
     "assetBundlePatterns": ["**/*"],
-    "icon": "",
+    "icon": "src/assets/adaptive-icon.png",
     "version": "1.0.0",
     "splash": {
       "image": "./src/assets/splash.png",

@@ -4,7 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { style } from "./style";
 
-type CardProps = {
+export type CardGeneralProps = {
   userDetails?: {
     id?: number;
     username?: string;
@@ -15,7 +15,11 @@ type CardProps = {
   toogle?: () => void;
 };
 
-const CardGeneralDebt = ({ userDetails, indexItem, toogle }: CardProps) => {
+const CardGeneralDebt = ({
+  userDetails,
+  indexItem,
+  toogle,
+}: CardGeneralProps) => {
   const navigation = useNavigation();
 
   function handleRenderCard(i) {
